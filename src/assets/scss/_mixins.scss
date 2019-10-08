@@ -1,0 +1,96 @@
+@import 'variables';
+
+// Media queries
+// -------------
+@mixin mq-min($width) {
+  $unit: unit($width);
+  @if $unit != "" {
+    @media only screen and (min-width: #{$width}) {
+      @content;
+    }
+  }
+  @else {
+    @media only screen and (min-width: #{$width}px) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-max($width) {
+  $unit: unit($width);
+  @if $unit != "" {
+    @media only screen and (max-width: #{$width}) {
+      @content;
+    }
+  }
+  @else {
+    @media only screen and (max-width: #{$width}px) {
+      @content;
+    }
+  }
+}
+
+@mixin mq-min-max($width-min, $width-max) {
+  $unit: unit($width-min);
+  $unit2: unit($width-max);
+  @if $unit != "" and $unit2 != "" {
+    @media only screen and (min-width: #{$width-min}) and (max-width: #{$width-max}) {
+      @content;
+    }
+  }
+  @else {
+    @if $unit != "" {
+      @media only screen and (min-width: #{$width-min}) and (max-width: #{$width-max}px) {
+        @content;
+      }
+    }
+    @if $unit2 != "" {
+      @media only screen and (min-width: #{$width-min}px) and (max-width: #{$width-max}) {
+        @content;
+      }
+    }
+    @else {
+      @media only screen and (min-width: #{$width-min}px) and (max-width: #{$width-max}px) {
+        @content;
+      }
+    }
+  }
+}
+
+
+// Recently used
+@mixin mq-mobile-only {
+  @media (max-width: $tablet - 1) {
+    @content;
+  }
+}
+
+@mixin mq-tablet {
+  @media only screen and (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin mq-tablet-only {
+  @media only screen and (min-width: $tablet) and (max-width : $desctop - 1) {
+    @content;
+  }
+}
+
+@mixin mq-tablet-down {
+  @media only screen and (max-width: $desctop - 1) {
+    @content;
+  }
+}
+
+@mixin mq-desctop {
+  @media only screen and (min-width: $desctop) {
+    @content;
+  }
+}
+
+// Vertical alignment
+@mixin vertical-centered {
+  top: 50%;
+  transform: translateY(-50%);
+}

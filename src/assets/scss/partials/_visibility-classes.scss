@@ -1,0 +1,106 @@
+@import 'base-part';
+
+/**
+# 1. Visibility
+# 2. Screen width
+# 3. Orientation
+# 4. Unactive tools
+*/
+
+// --------------
+//  1. Visibility
+// --------------
+
+.is-visible {
+  display: block!important
+}
+.is-hidden,
+.hide {
+  display: none!important
+}
+.invisible {
+  visibility: hidden
+}
+.hidden-autocomplete-input {
+  position: absolute;
+  opacity: 0;
+  left: -9999px
+}
+
+
+// ----------------
+//  2. Screen width
+// ----------------
+.hide-for-small-only,
+.show-for-medium {
+  @include mq-mobile-only { display:none!important }
+}
+.show-for-small-only,
+.hide-for-medium {
+  @include mq-tablet { display:none!important }
+}
+.hide-for-medium-only {
+  @include mq-min-max($tablet, $desctop - 1) { display:none!important }
+}
+.hide-for-large {
+  @include mq-desctop { display:none!important }
+}
+.show-for-large {
+  @include mq-max($desctop - 1) { display:none!important }
+}
+.show-for-medium-only {
+  @include mq-min-max($desctop, $tablet - 1) { display:none!important }
+}
+
+.hide-for-large-only {
+  @media screen and (min-width: 64em) and (max-width:79.9375em) {
+    display:none!important
+  }
+}
+.show-for-large-only {
+  @media screen and (max-width: 63.9375em),screen and (min-width:80em) {
+    display:none!important
+  }
+}
+.show-for-print {
+  display: none!important
+}
+.show-for-sr,.show-on-focus {
+  position: absolute!important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0)
+}
+.show-on-focus {
+  &:active,
+  &:focus {
+    position: static!important;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto
+  }
+}
+
+
+// -----------------
+// 4. Unactive tools
+// -----------------
+
+.unactive-tools {
+  position: relative;
+  border-color: #eef2f7;
+  &::before {
+    content: "";
+    display: block;
+    width: 102%;
+    height: 102%;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    background-color: #fff;
+    opacity: .7;
+    z-index: 5
+  }
+}

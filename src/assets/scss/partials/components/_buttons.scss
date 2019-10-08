@@ -1,0 +1,201 @@
+@import 'base-part';
+
+// Colors
+$white: #fefefe;
+$primary: $color-main;
+$secondary: #767676;
+$success: #3adb76;
+$action: $color-accent;
+$warning: $color-accent;
+$alert: #cc4b37;
+
+
+button {
+  padding: 0;
+  appearance: none;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  line-height: 1
+}
+
+.button {
+  width: 100%;
+  height: $control-height-mobile;
+  margin: 0;
+  padding: 0 8px;
+  @include mq-tablet {
+    height: $control-height;
+  }
+}
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background-color: $color-main;
+  color: $white;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  transition:
+    background-color .25s ease-out,
+    color .25s ease-out;
+  cursor: pointer;
+
+  &:active,
+  &:focus {
+    border: 1px solid transparent
+  }
+  &:focus,
+  &:hover {
+    background-color: #055a9c;
+    color: $white
+  }
+}
+
+// Sizes
+.button {
+  &.tiny  { font-size: .6rem }
+  &.small { font-size: .75rem }
+  &.large { font-size: 1.25rem }
+  &.expanded {
+    display: block;
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0
+  }
+}
+
+// Color classes
+// -------------
+.button {
+  &.primary {
+    background-color: $color-main;
+    &:focus, &:hover {
+      background-color: #055592;
+    }
+  }
+  // &.secondary {
+  // 	background-color: #767676;
+  // 	&:focus, &:hover {
+  // 		background-color: #5e5e5e;
+  // 	}
+  // }
+  // &.success {
+  // 	background-color: #3adb76;
+  // 	&:focus, &:hover {
+  // 		background-color: #22bb5b;
+  // 	}
+  // }
+  &.action,
+  &.warning {
+    background-color: $color-accent;
+    &:focus, &:hover {
+      background-color: #d48906;
+    }
+  }
+  // &.alert {
+  // 	background-color: #cc4b37;
+  // 	&:focus, &:hover {
+  // 		background-color: #a53b2a;
+  // 	}
+  // }
+}
+
+
+// Hollow styles - only borders (transparent bg color)
+// ---------------------------------------------------
+.button.hollow {
+  border: 1px solid $color-main;
+  color: $color-main;
+  &, &:focus, &:hover {
+    background-color: transparent
+  }
+  &:focus, &:hover {
+    border-color: #03355c; color: #03355c
+  }
+
+  // &.primary {
+  // 	border: 1px solid $color-main; color: $color-main;
+  // 	&:focus, &:hover {
+  // 		border-color: #03355c; color: #03355c
+  // 	}
+  // }
+  // &.success {
+  // 	border: 1px solid #3adb76; 	color: #3adb76;
+  // 	&:focus, &:hover {
+  // 		border-color: #157539; color: #157539
+  // 	}
+  // }
+  &.action,
+  &.warning {
+    border: 1px solid $color-accent; color: $color-accent;
+    &:focus, &:hover {
+      border-color: #845604; color: #845604
+    }
+  }
+}
+
+
+// Disabled
+// --------
+.button.disabled,
+.button.disabled.primary,
+.button[disabled] {
+  opacity: .25;
+  cursor: not-allowed;
+  &, &:focus, &:hover {
+    background-color: $color-main;
+  }
+}
+
+.button.disabled,
+.button[disabled] {
+  &.success {
+    &, &:focus, &:hover {
+      background-color: #3adb76;
+    }
+  }
+  &.action,
+  &.warning {
+    &, &:focus, &:hover {
+      background-color: $color-accent;
+    }
+  }
+}
+
+// Close-buttons
+.close-button {
+  position: absolute;
+  color: #8a8a8a;
+  cursor: pointer;
+  font-size: 2em;
+  line-height: 1;
+  background-image: url(/assets/images/svg/close_b.svg);
+  width: 16px;
+  height: 16px;
+  right: 33px;
+  top: 32px;
+  &:focus,
+  &:hover {
+    color: $color-text
+  }
+}
+
+.button-facebook {
+  background-color: #3b5998;
+  line-height: 3.53846rem
+}
+.button-facebook .icon-facebook {
+  background: url(/assets/images/svg/sm_icon/facebook_w.svg) 0 0 no-repeat;
+  background-size: 100% 100%;
+  display: inline-block;
+  position: relative;
+  width: 8px;
+  height: 18px;
+  margin-right: 11px;
+  vertical-align: text-top
+}

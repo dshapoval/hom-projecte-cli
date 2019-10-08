@@ -1,0 +1,31 @@
+@import '_colors';
+
+
+// 1. Global
+// ---------
+$global-width: 1280px;
+$global-font-size: 13px;
+$global-lineheight: 1.5;
+$body-background: #fff;
+$body-font-color: $color-text;
+$body-font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$global-margin: 1rem;
+$global-padding: 1rem;
+$global-weight-normal: 300;
+$global-weight-bold: 700;
+$global-radius: 2px;
+$control-height: 48px;
+$control-height-mobile: 40px;
+
+
+// 2. Breakpoints
+// --------------
+$small      : 0;      // class .small
+$mobile-xl  : 480px;
+$mobile-xxl : 530px;
+$tablet     : 640px;  // class .medium
+$tablet-m   : 720px;
+$tablet-l   : 860px;
+$desctop    : 1024px; // class .large
+$desctop-xl : 1280px;
+$xxlarge-xl : 1440px;

@@ -1,0 +1,383 @@
+@import 'base-part';
+
+// *** Table of contents *** //
+//  0. Variables
+//  1. Input & Textarea
+//  2. Checkbox
+//  3. Label state marker
+//  4. Tool input & Tool-select + dropdown
+//  5. Card number input
+// ------------------------- //
+
+// ------------
+// 0. Variables
+// ------------
+
+$input-font-size: 16px;
+$input-mobile-hight: 40px;
+$input-base-hight: 48px;
+$placeholder-color: $color-grey-dark;
+$input-readonly-color: $color_input-disabled;
+$main-color-focus: #055a9c;
+$accent-color-focus: #d48906;
+
+
+
+// ---------------------
+// 1. Input & Textarea
+// ---------------------
+
+[type=color],
+[type=date],
+[type=datetime-local],
+[type=datetime],
+[type=email],
+[type=month],
+[type=number],
+[type=password],
+[type=search],
+[type=tel],
+[type=text],
+[type=time],
+[type=url],
+[type=week],
+textarea,
+.profile-page input,  // TODO: заменить
+.input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: $input-mobile-hight;
+  margin: 0;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: $global-radius;
+  background-color: $color-grey-light;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: $input-font-size;
+  font-weight: 300;
+  color: $color-text;
+  transition: none;
+  appearance: none;
+
+  &.filled {
+    border: none;
+    background-color: $color-bg-sand;
+    font-weight: 400;
+    color: $color-text;
+  }
+  &.error {
+    border: 1px solid #ff4900;
+    background-color: #fff;
+    // color: $color-text
+    // background: url(/assets/images/svg/error_icon.svg) calc(100% - 16px) 50% no-repeat;
+    // background-size: 16px 16px
+  }
+
+  &:focus,
+  &.filled:focus {
+    border: 1px solid $color-accent;
+    background-color: #fff;
+    font-weight: 400;
+    outline: none;
+    box-shadow: none;
+    transition: none
+  }
+  @include mq-tablet {
+    height: $input-base-hight;
+  }
+}
+
+textarea {
+  max-width: 100%;
+  &[rows] {
+    height: auto
+  }
+  &.textarea:focus {
+    border: 1px solid $color-accent;
+    background-color: #fff;
+    box-shadow: none;
+  }
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+input,
+textarea {
+  &::-webkit-input-placeholder {
+    color: $placeholder-color
+  }
+  &:-ms-input-placeholder {
+    color: $placeholder-color
+  }
+  &::-moz-placeholder {
+    opacity: 1
+  }
+  &::placeholder {
+    color: $placeholder-color
+  }
+  &:disabled,
+  &[readonly] {
+    background-color: $input-readonly-color;
+    cursor: not-allowed
+  }
+  // .input-centred {
+  // 	padding: 0;
+  // 	text-align: center
+  // }
+}
+
+[type=number] {
+  -moz-appearance: textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+  }
+}
+
+[type=button],
+[type=submit] {
+  appearance: none;
+  border-radius: $global-radius;
+}
+
+[type=checkbox],
+[type=radio] {
+  margin: 0;
+  + label {
+    display: inline-block;
+    vertical-align: baseline;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0
+  }
+  + label[for] {
+    cursor: pointer
+  }
+  label > & {
+    margin-right: 0
+  }
+}
+
+
+// -----------
+// 2. Checkbox
+// -----------
+
+[type=checkbox] {
+  position: absolute;
+  left: -9999px;
+  visibility: visible;
+}
+
+.checkbox {
+  [type=checkbox] + label {
+    position: relative;
+    margin-left: 0!important;
+    padding-left: 24px;
+    line-height: 1;
+    &::before {
+      content: "";
+      position: absolute;
+      box-sizing: border-box;
+      width: 15px;
+      height: 15px;
+      display: block;
+      background: #fff 50% no-repeat;
+      background-size: 60%;
+      border: 1px solid $color-grey-dark;
+      border-radius: 2px;
+      top: calc(50% - 8px);
+      left: 0
+    }
+    &.error::before {
+      border-color: rgba(255, 73, 0, 0.5);
+    }
+  }
+  [type=checkbox]:focus + label::before {
+    border: 1px solid  $color-main;
+  }
+  [type=checkbox]:checked + label::before {
+    border: none;
+    background-color: $color-main;
+    background-image: url(/assets/images/svg/check-icon.svg);
+  }
+  [type=checkbox]:checked:focus + label::before {
+    background-color: $main-color-focus;
+  }
+  &.orange {
+    [type=checkbox]:checked + label:before {
+      background-color: $color-accent;
+    }
+    [type=checkbox]:checked:focus + label:before {
+      background-color: $accent-color-focus;
+    }
+  }
+}
+
+
+// ---------------------
+// 3. Label state marker
+// ---------------------
+
+label {
+  display: block;
+  margin: 0 0 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: $global-lineheight;
+  color: inherit;
+  .additional & {
+    color: $color-grey-dark
+  }
+  .form-row &.check,
+  .form-row.checkbox &.check {
+    height: auto;
+    &::after { content: none; }
+  }
+}
+
+.form-row,
+.topup,
+.profile-cards_form,
+.transfer-requisite_form {
+  label:not(.switch-paddle) {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    margin: 0;
+    height: 32px;
+    line-height: 17px;
+    &::after {
+      content: '';
+      position: absolute;
+      box-sizing: border-box;
+      width: 5px;
+      height: 5px;
+      background: $color-grey-light;
+      border-radius: 50%;
+      top: 0;
+      right: -9px;
+    }
+    &.active,
+    &.filled {
+      &::after {
+        background: $color-accent;
+      }
+    }
+    &.error::after {
+      background: $color-error;
+    }
+  }
+
+  .radio {
+    label::after { visibility: hidden }
+    input:checked + label::after { visibility: visible }
+  }
+
+  @include mq-mobile-only {
+    margin-bottom: 16px;
+  }
+}
+
+label.no-marker {
+  &::after,
+  &::before { content: none }
+}
+
+
+// ----------------------------
+// 4. Tool input & Tool-select + dropdown
+// ---------------------------
+
+.tool-container {
+  position: relative;
+}
+
+.tool-input[readonly] {
+  cursor: pointer
+}
+
+.tool-select,
+.tool-input ~ ul {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  width: 100%;
+  max-height: 177px;
+  margin: 0;
+  padding: 8px 0;
+  border-radius: $global-radius;
+  background-color: #fff;
+  box-shadow: 0 1px 4px 1px $color-grey-light;
+  overflow-y: auto;
+  li {
+    margin: 4px 0;
+    padding: 4px 16px;
+    &:focus,
+    &:hover {
+      background-color: $color-grey-light;
+      cursor: pointer;
+    }
+    &.active {
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        box-sizing: border-box;
+        width: 5px;
+        height: 5px;
+        background: $color-accent;
+        border-radius: 50%;
+        top: 40%;
+        right: 1rem;
+      }
+    }
+  }
+}
+.tool-input ~ ul {
+  top: 80px;
+}
+
+
+// --------------------
+// 5. Card number input
+// --------------------
+
+.card__number {
+  background-image: url(/assets/images/cards/card-deact.png);
+  background-position: calc(100% - 16px) 50%;
+  background-repeat: no-repeat;
+  background-size: auto 24px;
+
+  @include mq-mobile-only {
+    background-size: 40px
+  }
+
+  &:focus {
+    background-image: none;
+    background-repeat: no-repeat
+  }
+  &.ms,
+  &.ms.error:focus {
+    background-image: url(/assets/images/cards/card_mc.svg);
+    background-size: 38px 34px;
+    background-position-x: calc(100% - 13px)
+  }
+  &.visa,
+  &.visa.error:focus {
+    background-image: url(/assets/images/cards/visa-blue.svg);
+    background-size: 42px 14px
+  }
+  &.prostir,
+  &.prostir.error:focus {
+    background-image: url(/assets/images/cards/logo_prostir.svg);
+    background-size: 63px 12px
+  }
+}
