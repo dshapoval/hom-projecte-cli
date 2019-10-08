@@ -1,4 +1,4 @@
-@import 'base-part';
+@import '../base-part';
 /* normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -37,7 +37,6 @@ body {
   font-family: $body-font-family;
   font-weight: $global-weight-normal;
   line-height: $global-lineheight;
-  color: $color-text;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -337,7 +336,6 @@ h4 { font-size: 18px }
 }
 a {
   line-height: inherit;
-  color: $color-main;
   background-color: transparent;
   text-decoration: none;
   cursor: pointer;
