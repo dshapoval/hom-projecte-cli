@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header/header.module';
 import { FooterModule } from './footer/footer.module';
 import { MainModule } from './main/main.module';
+import { SignInModule } from './sign-in/sign-in.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { MainModule } from './main/main.module';
     BrowserAnimationsModule,
     HeaderModule,
     FooterModule,
-    MainModule
+    MainModule,
+    SignInModule,
   ],
   declarations: [
     AppComponent,
