@@ -1,2 +1,44 @@
-<p>header works!</p>
-<a routerLink="/sign-in" routerLinkActive="active">Heroes</a>
+<section class="header">
+  <div class="wrapper row header-container">
+    <div class="logo shrink column medium-order-1 large-order-1">
+      <a class="logo-link" href="">
+        <img src="assets/images/main-logo.png" alt="">
+      </a>
+    </div>
+    <div class="burger-button hamburger hamburger--elastic" (click)="showHideMainMenu()" [ngClass]="{'is-active': !isMainMenuShown}">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+  </div>
+    <div class="menu medium-order-3 large-order-2 columns  medium-16 large-expand"
+         [@showMainMenu]="mainMenuState"
+         [ngClass]="{'is-open': !isMainMenuShown}">
+      <div class="menu-item">
+        <a class="menu-link" href="">Новинки</a>
+      </div>
+      <div class="menu-item">
+        <a class="menu-link" href="">Трейлеры</a>
+      </div>
+      <div class="menu-item">
+        <a class="menu-link" href="">Развлекательные</a>
+      </div>
+      <div class="menu-item">
+        <a class="menu-link" href="">Позновательные</a>
+      </div>
+      <div class="menu-item">
+        <a class="menu-link" href="">Передачи</a>
+      </div>
+      <div class="menu-item">
+        <a class="menu-link" href="">ТОП</a>
+      </div>
+    </div>
+    <div class="log-in-block column shrink medium-order-2 large-order-3">
+      <div class="sign-in">
+        <a class="sign-in__link" href="">Вход</a>
+      </div>
+      <div class="registration">
+        <a class="registration__link" href="">Регистрация</a>
+      </div>
+    </div>
+  </div>
+</section>

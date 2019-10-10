@@ -6,9 +6,11 @@ import { SignInComponent } from './sign-in/sign-in.component';
 
 
 export const appRoutes: Routes = [
+
   {
     path: '',
     component: MainComponent,
+    pathMatch: 'full'
   },
   {
     path: 'main',

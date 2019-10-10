@@ -5,9 +5,18 @@ import { MainComponent } from './main.component';
 export const MainRoutes: Routes = [
   {
     path: '',
-    component: MainComponent,
-    pathMatch: 'full',
-  }
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: MainComponent,
+      },
+      {
+        path: 'sign-in',
+        loadChildren: () => import('../sign-in/sign-in.module').then(m => m.SignInModule),
+      }
+    ]
+  },
 ];
 
 @NgModule({
