@@ -9,8 +9,8 @@ export const appRoutes: Routes = [
 
   {
     path: '',
-    component: MainComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    redirectTo: 'main'
   },
   {
     path: 'main',

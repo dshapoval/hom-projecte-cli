@@ -1,7 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { debounce } from '../shared/decorators/debounce';
-// import { debounce } from 'rxjs/operators';
+import { Links } from './links';
+
 
 @Component({
   selector: 'app-header',
@@ -22,15 +23,29 @@ import { debounce } from '../shared/decorators/debounce';
 
 })
 export class HeaderComponent implements OnInit {
+  public links: Array<Links>;
+
   public mainMenuState: string;
   public isMainMenuShown: boolean = true;
   public isDesktop: boolean = true;
 
 
-  constructor() { }
+  constructor() {
+    this.links = this.getLinks();
+  }
 
   ngOnInit() {
     this.getDeviceType();
+  }
+  public getLinks() : Array<Links> {
+    return [
+      {path: '/recently-viewed', label: 'Просмотренные', index: 0},
+      {path: '/new-items', label: 'Новинки', index: 1},
+      {path: '/trailers', label: 'Трейлеры', index: 2},
+      {path: '/recomendations', label: 'Рекомендации', index: 3},
+      {path: '/watch-later', label: 'Смотреть позже', index: 4},
+      {path: '/top', label: 'ТОП', index: 5},
+    ]
   }
   public setMainMenuState(): void {
     this.mainMenuState = !this.isDesktop && this.isMainMenuShown ? 'close' : 'open';

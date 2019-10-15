@@ -3,11 +3,24 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { SignInModule } from '../sign-in/sign-in.module';
+import { WatchLaterModule } from './watch-later/watch-later.module';
+import { TrailersModule } from './trailers/trailers.module';
+import { RecentlyViewedModule } from './recently-viewed/recently-viewed.module';
+import { NewItemsModule } from './new-items/new-items.module';
+import { RecommendationsModule } from './recommendations/recommendations.module';
 
 
 
 @NgModule({
-  imports: [CommonModule, MainRoutingModule, SignInModule],
+  imports: [
+    CommonModule,
+    MainRoutingModule,
+    SignInModule,
+    WatchLaterModule,
+    TrailersModule,
+    RecentlyViewedModule,
+    NewItemsModule,
+    RecommendationsModule],
   declarations: [ MainComponent ],
   exports: [ MainComponent ]
 })
