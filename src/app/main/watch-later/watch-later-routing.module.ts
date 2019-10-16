@@ -5,6 +5,7 @@ import { WatchLaterComponent } from './watch-later.component';
 export const WatchLaterRoutes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: WatchLaterComponent,
   },
 ];

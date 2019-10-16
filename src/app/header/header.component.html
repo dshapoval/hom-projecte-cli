@@ -14,7 +14,7 @@
          [@showMainMenu]="mainMenuState"
          [ngClass]="{'is-open': !isMainMenuShown}">
       <div class="menu-item" *ngFor="let link of links" >
-        <a class="menu-link" [routerLink] = "link.path" routerLinkActive = 'active-link'>{{link.label}}</a>
+        <a class="menu-link" [routerLink] = "link.path" routerLinkActive = "active-link" [routerLinkActiveOptions]="{exact: true}">{{link.label}}</a>
       </div>
     </div>
     <div class="log-in-block column shrink medium-order-2 large-order-3">

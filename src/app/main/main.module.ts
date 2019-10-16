@@ -8,6 +8,7 @@ import { TrailersModule } from './trailers/trailers.module';
 import { RecentlyViewedModule } from './recently-viewed/recently-viewed.module';
 import { NewItemsModule } from './new-items/new-items.module';
 import { RecommendationsModule } from './recommendations/recommendations.module';
+import { TopModule } from './top/top.module';
 
 
 
@@ -20,6 +21,7 @@ import { RecommendationsModule } from './recommendations/recommendations.module'
     TrailersModule,
     RecentlyViewedModule,
     NewItemsModule,
+    TopModule,
     RecommendationsModule],
   declarations: [ MainComponent ],
   exports: [ MainComponent ]

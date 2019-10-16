@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TopRoutingModule } from './top-routing.module';
 import { TopComponent } from './top.component';
-import { WatchLaterComponent } from '../watch-later/watch-later.component';
 
 
 
 @NgModule({
-  imports: [ CommonModule ],
+  imports: [
+    CommonModule,
+    TopRoutingModule,
+  ],
   declarations: [ TopComponent ],
   exports: [ TopComponent ]
 

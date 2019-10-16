@@ -37,15 +37,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.getDeviceType();
   }
-  public getLinks() : Array<Links> {
+  public getLinks(): Array<Links> {
     return [
-      {path: '/recently-viewed', label: 'Просмотренные', index: 0},
-      {path: '/new-items', label: 'Новинки', index: 1},
-      {path: '/trailers', label: 'Трейлеры', index: 2},
-      {path: '/recomendations', label: 'Рекомендации', index: 3},
-      {path: '/watch-later', label: 'Смотреть позже', index: 4},
-      {path: '/top', label: 'ТОП', index: 5},
-    ]
+      {path: 'main/recently-viewed', label: 'Просмотренные', index: 0},
+      {path: 'main/new-items', label: 'Новинки', index: 1},
+      {path: 'main/trailers', label: 'Трейлеры', index: 2},
+      {path: 'main/recommendations', label: 'Рекомендации', index: 3},
+      {path: 'main/watch-later', label: 'Смотреть позже', index: 4},
+      {path: 'main/top', label: 'ТОП', index: 5},
+    ];
   }
   public setMainMenuState(): void {
     this.mainMenuState = !this.isDesktop && this.isMainMenuShown ? 'close' : 'open';

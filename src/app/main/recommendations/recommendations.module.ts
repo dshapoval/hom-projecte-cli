@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RecommendationsComponent } from './recommendations.component';
-import { WatchLaterComponent } from '../watch-later/watch-later.component';
+import { RecommendationsRoutingModule } from './recomendations-routing.module';
 
 
 
 @NgModule({
-  imports: [ CommonModule ],
+  imports: [
+    CommonModule,
+    RecommendationsRoutingModule
+  ],
   declarations: [RecommendationsComponent],
   exports: [ RecommendationsComponent ]
 

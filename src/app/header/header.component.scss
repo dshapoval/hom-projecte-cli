@@ -49,6 +49,13 @@
     }
   }
 }
+.active-link {
+  color: darken(#bebebe, 10%);
+  background-color: darken(#736b6b, 20%);
+  @include mq-min(800) {
+    background-color: rgba(80, 80, 80, .54);
+  }
+}
 .log-in-block {
   display: flex;
   flex-direction: column;
