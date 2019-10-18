@@ -22,7 +22,8 @@ import { TopModule } from './top/top.module';
     RecentlyViewedModule,
     NewItemsModule,
     TopModule,
-    RecommendationsModule],
+    RecommendationsModule,
+    SignInModule],
   declarations: [ MainComponent ],
   exports: [ MainComponent ]
 })

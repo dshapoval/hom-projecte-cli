@@ -31,6 +31,17 @@ export const MainRoutes: Routes = [
         path: 'watch-later',
         loadChildren: () => import('./watch-later/watch-later.module').then(m => m.WatchLaterModule),
       }
+      ,
+      {
+        path: 'sign-in',
+        loadChildren: () => import('./watch-later/watch-later.module').then(m => m.WatchLaterModule),
+      }
+      ,
+      {
+        path: '',
+        redirectTo: 'new-items',
+        pathMatch: 'full',
+      }
     ]
   },
 

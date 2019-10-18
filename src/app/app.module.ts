@@ -7,6 +7,7 @@ import { HeaderModule } from './header/header.module';
 import { FooterModule } from './footer/footer.module';
 import { MainModule } from './main/main.module';
 import { SignInModule } from './sign-in/sign-in.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { SignInModule } from './sign-in/sign-in.module';
   ],
   declarations: [
     AppComponent,
+    NotFoundComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
