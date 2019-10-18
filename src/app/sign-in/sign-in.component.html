@@ -2,10 +2,15 @@
   <p class="log-in__title small-16">Log In With Google</p>
   <div class="log-in__buttons row small-16">
     <div class="column small-4">
-      <button class="button button-red">Log In</button>
+      <button class="button button-red" (click)="singIn()">Log In</button>
     </div>
     <div class="column small-4">
-      <button class="button column">Log Out</button>
+      <button class="button button-grey column">Log Out</button>
     </div>
   </div>
 </section>
+<!--<script async defer-->
+<!--        src="https://apis.google.com/js/api.js"-->
+<!--        onload="this.onload=function(){};handleClientLoad()"-->
+<!--        onreadystatechange="if (this.readyState === 'complete') this.onload()">-->
+<!--</script>-->
