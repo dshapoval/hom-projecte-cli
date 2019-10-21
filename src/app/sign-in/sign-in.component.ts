@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GoogleApiService } from '../services/google-api.service';
+import { GoogleApiService } from 'ng-gapi';
+import { UserService } from '../shared/services/user.service';
 // import 'https://apis.google.com/js/api.js';
 
 @Component({
@@ -8,48 +9,34 @@ import { GoogleApiService } from '../services/google-api.service';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-// Options
-  googleApi = 'https://apis.google.com/js/api.js';
-  public CLIENT_ID = '781957298776-3cuabf7f0albtoragc3j66m4pvqq202n.apps.googleusercontent.com';
-  public DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest' ];
-  public SCOPES = 'https://www.googleapis.com/auth/youtube.readonly';
-  public gapiScript: any;
+
+  public isSignIn: boolean;
 
   constructor(
-    public scriptService: GoogleApiService,
-  )
-  { }
-
-  ngOnInit() {
-    this.scriptService.load('gapi').then(data => {
-      console.log('script loaded ', data);
-      this.gapiScript = data;
-    }).catch(error => console.log(error));
-  }
-  public handleClientLoad(): void {
-    this.gapiScript.load('client:auth2', this.initClient());
-  }
-  public initClient() {
-    this.gapiScript.client.init({
-      discoveryDocs: this.DISCOVERY_DOCS,
-      clientId: this.CLIENT_ID,
-      scope: this.SCOPES
-    }).then(() => {
-      // listen
-      this.gapiScript.auth2.getAuthInstance().isSignIn.listen(this.updateSigninStatus);
-      // Handle
-      this.updateSigninStatus(this.gapiScript.auth2.getAuthInstance().isSignedIn.get());
+    private gapiService: GoogleApiService,
+    private userService: UserService,
+    ) {
+    gapiService.onLoad().subscribe(() => {
+      // Here we can use gapi
+      // gapi.client.load('youtube', 'v3', () => {
+      //   console.log('youtube api ready');
+      // });
     });
   }
 
-  public updateSigninStatus(isSignedIn) {
-    if(isSignedIn) {
-      console.log(true);
-      return;
-    }
-    console.log(false);
+  ngOnInit() {
   }
+
   public singIn(): void {
-    this.gapiScript.auth2.getAuthInstance().signIn();
+    this.userService.signIn();
+    // this.isSignIn = this.userService.signIn();
+  }
+  public singOut(): void {
+    this.userService.signOut();
+  }
+  public getPlaylist(): any {
+    const myToken = this.userService.getToken();
+    console.log(myToken);
+    // const request = this.gapiService.getClientConfig().youtube.playlistItems.list(requestOptions);
   }
 }
