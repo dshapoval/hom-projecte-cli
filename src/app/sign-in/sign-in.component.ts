@@ -18,9 +18,7 @@ export class SignInComponent implements OnInit {
     ) {
     gapiService.onLoad().subscribe(() => {
       // Here we can use gapi
-      // gapi.client.load('youtube', 'v3', () => {
-      //   console.log('youtube api ready');
-      // });
+
     });
   }
 
@@ -37,6 +35,5 @@ export class SignInComponent implements OnInit {
   public getPlaylist(): any {
     const myToken = this.userService.getToken();
     console.log(myToken);
-    // const request = this.gapiService.getClientConfig().youtube.playlistItems.list(requestOptions);
   }
 }
