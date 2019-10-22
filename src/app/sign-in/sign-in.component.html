@@ -1,4 +1,4 @@
-<section class="row wrapper">
+<section class="row wrapper" [formGroup]="form">
   <p class="log-in__title small-16">Log In With Google</p>
   <div class="log-in__buttons mt row small-16">
     <div class="column small-4">
@@ -10,7 +10,15 @@
   </div>
   <div class="get-list mt row small-16">
     <div class="column small-4">
-      <button class="button button-red" (click)="getPlaylist()">get list</button>
+      <button class="button button-red" (click)="getPlaylist()">get mine playlist</button>
+    </div>
+    <div class="column small-4">
+      <input type="text" formControlName="channelId">
+      <button class="button button-red"
+              [disabled]="!form.valid"
+              (click)="getPlaylist(form.get('channelId').value)">
+        get playlist by channelId
+      </button>
     </div>
   </div>
 </section>

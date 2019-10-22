@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from './main/main.component';
-import { AppComponent } from './app.component';
-import { SignInComponent } from './sign-in/sign-in.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-
 export const appRoutes: Routes = [
-
   {
     path: '',
     pathMatch: 'full',
@@ -32,7 +27,11 @@ export const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(appRoutes) ],
-  exports: [ RouterModule ]
+  imports: [
+    RouterModule.forRoot(appRoutes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }

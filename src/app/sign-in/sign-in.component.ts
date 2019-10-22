@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleApiService } from 'ng-gapi';
 import { UserService } from '../shared/services/user.service';
-// import 'https://apis.google.com/js/api.js';
+import { YoutubeApiService } from '../shared/services/youtube-api.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,30 +11,42 @@ import { UserService } from '../shared/services/user.service';
 })
 export class SignInComponent implements OnInit {
 
-  public isSignIn: boolean;
+  public form: FormGroup;
 
   constructor(
     private gapiService: GoogleApiService,
     private userService: UserService,
+    private youtubeApiService: YoutubeApiService,
+    private formBuilder: FormBuilder
     ) {
-    gapiService.onLoad().subscribe(() => {
-      // Here we can use gapi
-
-    });
   }
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  public initForm(): void {
+    this.form = this.formBuilder.group({
+      channelId: ['',  Validators.required],
+    });
   }
 
   public singIn(): void {
     this.userService.signIn();
-    // this.isSignIn = this.userService.signIn();
   }
+
   public singOut(): void {
     this.userService.signOut();
   }
-  public getPlaylist(): any {
-    const myToken = this.userService.getToken();
-    console.log(myToken);
+
+  public getPlaylist(channelId?: string): any {
+    this.youtubeApiService.getMinePlaylist(channelId)
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+        },
+        (error: any) => {
+          console.log(error);
+        });
   }
 }
