@@ -1,11 +1,14 @@
 <section class="row wrapper" [formGroup]="form">
-  <p class="log-in__title small-16">Log In With Google</p>
+  <h1 class="log-in__title small-16">
+    <strong>Добро пжаловать</strong>, для просмотра видео пожалуйста авторизируйтесь.
+    <p class="title-descr">Авторизация возможна только при наличии Google аккаунта</p>
+  </h1>
   <div class="log-in__buttons mt row small-16">
     <div class="column small-4">
-      <button class="button button-red" (click)="singIn()">Log In</button>
+      <button class="button button-red" (click)="singIn()">Войти через Google</button>
     </div>
     <div class="column small-4">
-      <button class="button button-grey column" (click)="singOut()">Log Out</button>
+      <button class="button button-grey column" (click)="singOut()">Выход</button>
     </div>
   </div>
   <div class="get-list mt row small-16">

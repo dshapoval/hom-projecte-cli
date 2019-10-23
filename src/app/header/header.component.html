@@ -18,8 +18,11 @@
       </div>
     </div>
     <div class="log-in-block column shrink medium-order-2 large-order-3">
-      <div class="sign-in">
-        <a class="sign-in__link" [routerLink]="['sign-in']">Вход</a>
+      <div *ngIf="!isSignIn" class="sign-in">
+        <a class="sign-in__link" [routerLink]="['sign-in']" routerLinkActive = "active">Войти</a>
+      </div>
+      <div *ngIf="isSignIn" class="sign-out">
+        <button class="sign-out__button" (click)="singOut()">Выйти</button>
       </div>
       <div class="registration">
         <a class="registration__link" href="">Регистрация</a>

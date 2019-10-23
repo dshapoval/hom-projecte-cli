@@ -35,6 +35,10 @@ export const MainRoutes: Routes = [
       {
         path: 'sign-in',
         loadChildren: () => import('./watch-later/watch-later.module').then(m => m.WatchLaterModule),
+      },
+      {
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
       }
       ,
       {

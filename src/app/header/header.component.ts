@@ -2,6 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { debounce } from '../shared/decorators/debounce';
 import { Links } from './links';
+import { UserService } from '../shared/services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,14 +30,18 @@ export class HeaderComponent implements OnInit {
   public mainMenuState: string;
   public isMainMenuShown: boolean = true;
   public isDesktop: boolean = true;
+  public isSignIn: boolean;
 
-
-  constructor() {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+  ) {
     this.links = this.getLinks();
   }
 
   ngOnInit() {
     this.getDeviceType();
+    this.getUserStatus();
   }
   public getLinks(): Array<Links> {
     return [
@@ -57,7 +63,19 @@ export class HeaderComponent implements OnInit {
 
   public getDeviceType(): void {
       this.isDesktop = window.innerWidth > 800;
-    this.setMainMenuState();
+      this.setMainMenuState();
+  }
+  public getUserStatus(): void {
+    this.isSignIn = this.userService.isUserSignedIn();
+    this.navigateToSignIn();
+  }
+  public navigateToSignIn(): void {
+    !this.isSignIn ? this.router.navigate(['sign-in']) : console.log(this.isSignIn);
+  }
+  public singOut(): void {
+    this.userService.signOut();
+    this.getUserStatus();
+    console.log(this.isSignIn);
   }
 
   @HostListener('window:resize')

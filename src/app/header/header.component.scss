@@ -60,7 +60,7 @@
   display: flex;
   flex-direction: column;
 }
-.sign-in__link, .registration__link {
+.sign-in__link, .registration__link, .sign-out__button{
   display: block;
   color: white;
   line-height: 28px;
@@ -70,6 +70,17 @@
     color: #ff0000;
     text-shadow: 0 0 4px 0 #ff0000;
   }
+}
+.sign-in__link.active {
+  color: #ff0000;
+  text-shadow: 0 0 4px 0 #ff0000;
+}
+.sign-out__button {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-weight: 300;
+  cursor: pointer;
 }
 //-------burger menu
 
@@ -156,31 +167,3 @@
   transform: translate3d(0, -14px, 0) rotate(-270deg);
   transition-delay: 0.075s; }
 
-/*
-    * Elastic Reverse
-    */
-.hamburger--elastic-r .hamburger-inner {
-  top: 2px;
-  transition-duration: 0.275s;
-  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-.hamburger--elastic-r .hamburger-inner::before {
-  top: 10px;
-  transition: opacity 0.125s 0.275s ease;
-}
-.hamburger--elastic-r .hamburger-inner::after {
-  top: 20px;
-  transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-.hamburger--elastic-r.is-active .hamburger-inner {
-  transform: translate3d(0, 10px, 0) rotate(-135deg);
-  transition-delay: 0.075s;
-}
-.hamburger--elastic-r.is-active .hamburger-inner::before {
-  transition-delay: 0s;
-  opacity: 0;
-}
-.hamburger--elastic-r.is-active .hamburger-inner::after {
-  transform: translate3d(0, -20px, 0) rotate(270deg);
-  transition-delay: 0.075s;
-}

@@ -3,6 +3,7 @@ import { GoogleApiService } from 'ng-gapi';
 import { UserService } from '../shared/services/user.service';
 import { YoutubeApiService } from '../shared/services/youtube-api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,17 +13,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignInComponent implements OnInit {
 
   public form: FormGroup;
+  public isSignIn: boolean;
 
   constructor(
     private gapiService: GoogleApiService,
     private userService: UserService,
     private youtubeApiService: YoutubeApiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
     ) {
   }
 
   ngOnInit() {
     this.initForm();
+    this.getUserStatus();
   }
 
   public initForm(): void {
@@ -32,7 +36,10 @@ export class SignInComponent implements OnInit {
   }
 
   public singIn(): void {
-    this.userService.signIn();
+     this.userService.signIn();
+      console.log(this.isSignIn);
+     this.getUserStatus();
+     console.log(this.isSignIn);
   }
 
   public singOut(): void {
@@ -48,5 +55,12 @@ export class SignInComponent implements OnInit {
         (error: any) => {
           console.log(error);
         });
+  }
+  public getUserStatus(): void {
+    this.isSignIn = this.userService.isUserSignedIn();
+    this.navigateToHome();
+  }
+  public navigateToHome(): void {
+    this.isSignIn ? this.router.navigate(['/main/home']) : console.log(this.isSignIn);
   }
 }

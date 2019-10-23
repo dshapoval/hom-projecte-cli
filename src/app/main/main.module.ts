@@ -9,6 +9,7 @@ import { RecentlyViewedModule } from './recently-viewed/recently-viewed.module';
 import { NewItemsModule } from './new-items/new-items.module';
 import { RecommendationsModule } from './recommendations/recommendations.module';
 import { TopModule } from './top/top.module';
+import { HomeModule } from './home/home.module';
 
 
 
@@ -23,6 +24,7 @@ import { TopModule } from './top/top.module';
     NewItemsModule,
     TopModule,
     RecommendationsModule,
+    HomeModule,
     SignInModule],
   declarations: [ MainComponent ],
   exports: [ MainComponent ]
