@@ -4,6 +4,8 @@ import { UserService } from '../shared/services/user.service';
 import { YoutubeApiService } from '../shared/services/youtube-api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppConstants } from '../app.constants';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-sign-in',
@@ -13,7 +15,9 @@ import { Router } from '@angular/router';
 export class SignInComponent implements OnInit {
 
   public form: FormGroup;
-  public isSignIn: boolean;
+  // @ts-ignore
+  // tslint:disable-next-line:no-bitwise
+  public isSignIn: boolean = this.userService.isAuth$.next(this.userService.isAuth()) | async ;
 
   constructor(
     private gapiService: GoogleApiService,
@@ -26,7 +30,9 @@ export class SignInComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.getUserStatus();
+    this.userService.isUserSignedIn();
+    this.isSignIn = this.userService.isSignIn;
+    console.log(this.userService.isAuth$);
   }
 
   public initForm(): void {
@@ -37,13 +43,12 @@ export class SignInComponent implements OnInit {
 
   public singIn(): void {
      this.userService.signIn();
-      console.log(this.isSignIn);
-     this.getUserStatus();
-     console.log(this.isSignIn);
+     this.isSignIn = this.userService.isSignIn;
   }
 
   public singOut(): void {
     this.userService.signOut();
+    this.isSignIn = this.userService.isSignIn;
   }
 
   public getPlaylist(channelId?: string): any {
@@ -55,12 +60,5 @@ export class SignInComponent implements OnInit {
         (error: any) => {
           console.log(error);
         });
-  }
-  public getUserStatus(): void {
-    this.isSignIn = this.userService.isUserSignedIn();
-    this.navigateToHome();
-  }
-  public navigateToHome(): void {
-    this.isSignIn ? this.router.navigate(['/main/home']) : console.log(this.isSignIn);
   }
 }

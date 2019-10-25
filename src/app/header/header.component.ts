@@ -3,7 +3,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { debounce } from '../shared/decorators/debounce';
 import { Links } from './links';
 import { UserService } from '../shared/services/user.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { async } from '@angular/core/testing';
 
 
 @Component({
@@ -35,13 +36,15 @@ export class HeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.links = this.getLinks();
   }
 
   ngOnInit() {
     this.getDeviceType();
-    this.getUserStatus();
+    this.isSignIn = this.userService.isAuth();
+    this.userService.isAuth$.next(this.isSignIn);
   }
   public getLinks(): Array<Links> {
     return [
@@ -65,17 +68,10 @@ export class HeaderComponent implements OnInit {
       this.isDesktop = window.innerWidth > 800;
       this.setMainMenuState();
   }
-  public getUserStatus(): void {
-    this.isSignIn = this.userService.isUserSignedIn();
-    this.navigateToSignIn();
-  }
-  public navigateToSignIn(): void {
-    !this.isSignIn ? this.router.navigate(['sign-in']) : console.log(this.isSignIn);
-  }
+
   public singOut(): void {
     this.userService.signOut();
-    this.getUserStatus();
-    console.log(this.isSignIn);
+    this.isSignIn = this.userService.isSignIn;
   }
 
   @HostListener('window:resize')

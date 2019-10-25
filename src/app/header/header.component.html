@@ -17,11 +17,11 @@
         <a class="menu-link" [routerLink] = "link.path" routerLinkActive = "active-link" [routerLinkActiveOptions]="{exact: true}">{{link.label}}</a>
       </div>
     </div>
-    <div class="log-in-block column shrink medium-order-2 large-order-3">
-      <div *ngIf="!isSignIn" class="sign-in">
+    <div class="log-in-block column shrink medium-order-2 large-order-3"> <!--!(this.userService.isAuth$ | async)-->
+      <div *ngIf="!(this.userService.isLogedIn() | async)" class="sign-in">
         <a class="sign-in__link" [routerLink]="['sign-in']" routerLinkActive = "active">Войти</a>
       </div>
-      <div *ngIf="isSignIn" class="sign-out">
+      <div *ngIf="this.userService.isLogedIn() | async" class="sign-out">
         <button class="sign-out__button" (click)="singOut()">Выйти</button>
       </div>
       <div class="registration">
