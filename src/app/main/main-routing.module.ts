@@ -43,7 +43,7 @@ export const MainRoutes: Routes = [
       ,
       {
         path: '',
-        redirectTo: 'new-items',
+        redirectTo: 'home',
         pathMatch: 'full',
       }
     ]

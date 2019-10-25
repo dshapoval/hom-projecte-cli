@@ -1,1 +1,21 @@
 @import 'assets/scss/style.scss';
+.button {
+  width: 100%;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  transition: .3s;
+}
+.button-red {
+  background: #ff0000;
+  &:hover {
+    background: darken(#ff0000, 20%);
+  }
+}
+.button-grey {
+  background: #bebebe;
+  &:hover {
+    background: darken(#bebebe, 20%);
+  }
+}

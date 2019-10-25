@@ -32,4 +32,39 @@ export class YoutubeApiService {
         })
       );
   }
+  public getUserVideos(channelId?: string): Observable<any> {
+    let params: HttpParams = new HttpParams();
+    const part = ['snippet', 'contentDetails'];
+    const chart  = ['mostPopular'];
+    params = params.append('part', part.join(','));
+    params = params.append('chart', chart.join(','));
+    // params = channelId
+    //   ? params.append('channelId', channelId)
+    //   : params.append('mine', 'true');
+    return this.http
+      .get(this.bindUrl('/videos'), {params})
+      .pipe(
+        catchError((error: any) => {
+          return throwError(error);
+        })
+      );
+  }
+
+  public getUserSubscriptionsList(channelId?: string): Observable<any> {
+    let params: HttpParams = new HttpParams();
+    const part = ['snippet', 'contentDetails'];
+    const chart  = ['mostPopular'];
+    params = params.append('part', part.join(','));
+    params = params.append('chart', chart.join(','));
+    params = channelId
+      ? params.append('channelId', channelId)
+      : params.append('mine', 'true');
+    return this.http
+      .get(this.bindUrl('/subscriptions'), {params})
+      .pipe(
+        catchError((error: any) => {
+          return throwError(error);
+        })
+      );
+  }
 }

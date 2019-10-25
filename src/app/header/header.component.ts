@@ -71,7 +71,6 @@ export class HeaderComponent implements OnInit {
 
   public singOut(): void {
     this.userService.signOut();
-    this.isSignIn = this.userService.isSignIn;
   }
 
   @HostListener('window:resize')
