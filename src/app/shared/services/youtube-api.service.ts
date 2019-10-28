@@ -67,4 +67,21 @@ export class YoutubeApiService {
         })
       );
   }
+  public getUserActivities(channelId?: string): Observable<any> {
+    let params: HttpParams = new HttpParams();
+    const part = ['snippet', 'contentDetails'];
+    const chart  = ['mostPopular'];
+    params = params.append('part', part.join(','));
+    // params = params.append('chart', chart.join(','));
+    params = channelId
+      ? params.append('channelId', channelId)
+      : params.append('mine', 'true');
+    return this.http
+      .get(this.bindUrl('/activities'), {params})
+      .pipe(
+        catchError((error: any) => {
+          return throwError(error);
+        })
+      );
+  }
 }
