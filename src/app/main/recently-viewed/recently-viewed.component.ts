@@ -9,41 +9,21 @@ import { YoutubeApiService } from '../../shared/services/youtube-api.service';
 })
 export class RecentlyViewedComponent implements OnInit {
   public config: SwiperConfigInterface;
+  public mySubscriptions: Array<any>
   constructor(
     private youtubeApiService: YoutubeApiService,
-
-  ) {
-    this.config = {
-      keyboard: true,
-      slidesPerView: 'auto',
-      setWrapperSize: true,
-      mousewheel: true,
-      watchOverflow: true,
-      grabCursor: true,
-      observer: true,
-      observeParents: true,
-      slidesPerColumnFill: 'row',
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      // scrollbar: {
-      //   draggable: true,
-      //   lockClass: 'swiper-scrollbar-lock',
-      //   dragClass: 'swiper-scrollbar-drag',
-      // }
-    };
-  }
+  ) {}
 
   ngOnInit() {
+    console.log('this.mySubscriptions', this.getSubscriptions());
   }
-  public test(): void {
+  public getSubscriptions(): any {
     this.youtubeApiService.getUserSubscriptionsList().subscribe(
       (response: any) => {
-        console.log(response);
+        this.mySubscriptions = response.items;
       },
       (error: any) => {
-        console.log(error);
+        return error;
       });
   }
 }

@@ -1,9 +1,10 @@
 <div class="video-item">
-  <div class="video-item__tumbnail">
-    <div class="video-item__link">
-      <a href=""></a>
-    </div>
-  </div>
-  <div class="video-item__title"></div>
-  <div class="video-item__rating"></div>
+  <div class="video-item__title">{{item.snippet.title}}</div>
+  <a class="video-item__link" href="">
+    <img [src]="item.snippet.thumbnails.high.url" alt="">
+    <span class="video-item__description">{{item.snippet.description}}</span>
+  </a>
+  <button class="button" (click)="getSubscriptVideo(item.snippet.resourceId.channelId)">
+    test
+  </button>
 </div>

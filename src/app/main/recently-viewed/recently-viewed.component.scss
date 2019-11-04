@@ -1,22 +1,16 @@
 @import "../../../assets/scss/base-part";
-
-.swiper-container {
-  width: 100%;
+.subscription {
+  margin-top: 16px;
 }
-.swiper-container { overflow: hidden; display: flex; position: relative }
-.swiper-wrapper {flex-grow: 1; display: flex; flex-wrap: nowrap!important;}
-//.swiper-slide { flex: 1 0 0; text-align: center; }
-.slider_button {
-  bottom: -20px;
+.title {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
   @include mq-tablet {
-    top: 0;
-    bottom: auto;
-    &.swiper-button-next { right: 2px;}
+    font-size: 18px;
+    font-weight: 600;
   }
-}
-.swiper-scrollbar {
-  position: absolute;
-  height: 2px;
-  background-color: white;
-  width: 100%;
+  @include mq-desctop {
+    font-size: 21px;
+  }
 }

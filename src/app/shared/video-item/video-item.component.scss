@@ -1,0 +1,20 @@
+.video-item {
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    height: 48px;
+  }
+  &__link {
+    display: inline-block;
+    margin-top: 8px;
+  }
+  &__description {
+    display: inline-block;
+    max-height: 76px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 19px;
+    word-break: break-word;
+    margin-top: 8px;
+  }
+}

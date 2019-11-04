@@ -13,6 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AppConstants } from './app.constants';
 import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 import { UserService } from './shared/services/user.service';
+import { SwiperContainerComponent } from './shared/swiper-container/swiper-container.component';
 
 @NgModule({
   imports: [

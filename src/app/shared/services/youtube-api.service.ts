@@ -38,11 +38,11 @@ export class YoutubeApiService {
     const chart  = ['mostPopular'];
     params = params.append('part', part.join(','));
     params = params.append('chart', chart.join(','));
-    // params = channelId
-    //   ? params.append('channelId', channelId)
-    //   : params.append('mine', 'true');
+    params = channelId
+      ? params.append('channelId', channelId)
+      : params.append('mine', 'true');
     return this.http
-      .get(this.bindUrl('/videos'), {params})
+      .get(this.bindUrl('/search'), {params})
       .pipe(
         catchError((error: any) => {
           return throwError(error);
@@ -78,6 +78,21 @@ export class YoutubeApiService {
       : params.append('mine', 'true');
     return this.http
       .get(this.bindUrl('/activities'), {params})
+      .pipe(
+        catchError((error: any) => {
+          return throwError(error);
+        })
+      );
+  }
+  public getVideoByChannelId(channelId?: string): Observable<any> {
+    let params: HttpParams = new HttpParams();
+    const part = ['snippet', 'contentDetails'];
+    params = params.append('part', part.join(','));
+    params = channelId
+      ? params.append('channelId', channelId)
+      : params.append('mine', 'false');
+    return this.http
+      .get(this.bindUrl('/playlists'), {params})
       .pipe(
         catchError((error: any) => {
           return throwError(error);
