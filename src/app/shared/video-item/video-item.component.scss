@@ -8,6 +8,9 @@
     display: inline-block;
     margin-top: 8px;
   }
+  &__pic {
+    border-radius: 4px;
+  }
   &__description {
     display: inline-block;
     max-height: 76px;

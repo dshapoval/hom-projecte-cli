@@ -8,12 +8,12 @@ export const MainRoutes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'new-items',
-        loadChildren: () => import('./new-items/new-items.module').then(m => m.NewItemsModule),
+        path: 'home',
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
       },
       {
-        path: 'recently-viewed',
-        loadChildren: () => import('./recently-viewed/recently-viewed.module').then(m => m.RecentlyViewedModule),
+        path: 'subscriptions',
+        loadChildren: () => import('./subscriptions/subscriptions.module').then(m => m.SubscriptionsModule),
       },
       {
         path: 'recommendations',
@@ -35,10 +35,6 @@ export const MainRoutes: Routes = [
       {
         path: 'sign-in',
         loadChildren: () => import('./watch-later/watch-later.module').then(m => m.WatchLaterModule),
-      },
-      {
-        path: 'home',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
       }
       ,
       {

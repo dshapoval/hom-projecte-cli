@@ -17,6 +17,7 @@
   background-color: #4e4e4e;
   overflow: hidden;
   text-align: left;
+  z-index: 2;
   @include mq-min(800) {
     position: static;
     justify-content: space-around;

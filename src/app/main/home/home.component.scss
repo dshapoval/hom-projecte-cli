@@ -1,0 +1,16 @@
+@import "../../../assets/scss/base-part";
+.subscriptionm, .liked-video {
+  margin-top: 16px;
+}
+.title {
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 500;
+  @include mq-tablet {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  @include mq-desctop {
+    font-size: 21px;
+  }
+}

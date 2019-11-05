@@ -48,9 +48,9 @@ export class HeaderComponent implements OnInit {
   }
   public getLinks(): Array<Links> {
     return [
-      {path: 'main/recently-viewed', label: 'Просмотренные', index: 0},
-      {path: 'main/new-items', label: 'Новинки', index: 1},
-      {path: 'main/trailers', label: 'Трейлеры', index: 2},
+      {path: 'main/home', label: 'Главная', index: 0},
+      {path: 'main/subscriptions', label: 'Подписки', index: 1},
+      {path: 'main/playlists', label: 'Мои плейлисты', index: 2},
       {path: 'main/recommendations', label: 'Рекомендации', index: 3},
       {path: 'main/watch-later', label: 'Смотреть позже', index: 4},
       {path: 'main/top', label: 'ТОП', index: 5},

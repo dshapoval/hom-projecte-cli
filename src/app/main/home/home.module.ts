@@ -2,17 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { YoutubeApiService } from '../../shared/services/youtube-api.service';
+import { VideoItemModule } from '../../shared/video-item/video-item.module';
+import { SwiperContainerModule } from '../../shared/swiper-container/swiper-container.module';
 
 
 
 @NgModule({
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    VideoItemModule,
+    SwiperContainerModule
   ],
   declarations: [ HomeComponent ],
   exports: [ HomeComponent ],
-  providers: [ YoutubeApiService ]
 })
-export class HomeModule { }
+
+export class HomeModule {}

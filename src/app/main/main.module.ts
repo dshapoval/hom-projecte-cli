@@ -5,7 +5,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { SignInModule } from '../sign-in/sign-in.module';
 import { WatchLaterModule } from './watch-later/watch-later.module';
 import { TrailersModule } from './trailers/trailers.module';
-import { RecentlyViewedModule } from './recently-viewed/recently-viewed.module';
+import { SubscriptionsModule } from './subscriptions/subscriptions.module';
 import { NewItemsModule } from './new-items/new-items.module';
 import { RecommendationsModule } from './recommendations/recommendations.module';
 import { TopModule } from './top/top.module';
@@ -20,12 +20,13 @@ import { HomeModule } from './home/home.module';
     SignInModule,
     WatchLaterModule,
     TrailersModule,
-    RecentlyViewedModule,
+    SubscriptionsModule,
     NewItemsModule,
     TopModule,
     RecommendationsModule,
     HomeModule,
-    SignInModule],
+    SignInModule
+  ],
   declarations: [ MainComponent ],
   exports: [ MainComponent ]
 })

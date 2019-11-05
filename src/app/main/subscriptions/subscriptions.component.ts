@@ -3,11 +3,11 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { YoutubeApiService } from '../../shared/services/youtube-api.service';
 
 @Component({
-  selector: 'app-recently-viewed',
-  templateUrl: './recently-viewed.component.html',
-  styleUrls: ['./recently-viewed.component.scss']
+  selector: 'subscriptions',
+  templateUrl: './subscriptions.component.html',
+  styleUrls: ['./subscriptions.component.scss']
 })
-export class RecentlyViewedComponent implements OnInit {
+export class SubscriptionsComponent implements OnInit {
   public config: SwiperConfigInterface;
   public mySubscriptions: Array<any>
   constructor(

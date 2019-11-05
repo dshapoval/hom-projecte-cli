@@ -17,9 +17,9 @@ export class YoutubeApiService {
     return AppConstants.YOUTUBE_API_URL + url;
   }
 
-  public getMinePlaylist(channelId?: string): Observable<any> {
+  public getPlaylist(channelId?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
-    const part = ['snippet', 'contentDetails'];
+    const part = ['snippet'];
     params = params.append('part', part.join(','));
     params = channelId
       ? params.append('channelId', channelId)
@@ -32,17 +32,19 @@ export class YoutubeApiService {
         })
       );
   }
-  public getUserVideos(channelId?: string): Observable<any> {
+  public getUserLikedVideos(channelId?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
-    const part = ['snippet', 'contentDetails'];
-    const chart  = ['mostPopular'];
+    const part = ['snippet'];
+    // const chart  = ['mostPopular'];
+    const myRating = ['like']
     params = params.append('part', part.join(','));
-    params = params.append('chart', chart.join(','));
+    // params = params.append('chart', chart.join(','));
+    params = params.append('myRating', myRating.join(','));
     params = channelId
       ? params.append('channelId', channelId)
       : params.append('mine', 'true');
     return this.http
-      .get(this.bindUrl('/search'), {params})
+      .get(this.bindUrl('/videos'), {params})
       .pipe(
         catchError((error: any) => {
           return throwError(error);
@@ -84,15 +86,15 @@ export class YoutubeApiService {
         })
       );
   }
-  public getVideoByChannelId(channelId?: string): Observable<any> {
+  public getVideoByChannelId(channelId?: string): Observable<any> { //return last downloaded video from channel
     let params: HttpParams = new HttpParams();
-    const part = ['snippet', 'contentDetails'];
+    const part = ['snippet', 'contentDetails', 'id'];
     params = params.append('part', part.join(','));
     params = channelId
       ? params.append('channelId', channelId)
       : params.append('mine', 'false');
     return this.http
-      .get(this.bindUrl('/playlists'), {params})
+      .get(this.bindUrl('/activities'), {params})
       .pipe(
         catchError((error: any) => {
           return throwError(error);

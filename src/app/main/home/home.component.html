@@ -1,9 +1,23 @@
 <article>
-  <div class="title">Просмотр контента доступен только авторизированным пользователям</div>
-  <section class="home wrapper">
-    <div class="row">
-      <div class="small-4 column"></div>
-      <button class="button button-red" (click)="getSubscriptions()">test</button>
-    </div>
+  <section class="subscription">
+    <div class="subscription__title title">Мои подписки</div>
+    <app-swiper-container>
+      <div *ngFor="let subscription of mySubscriptions" class="swiper-slide column">
+        <app-video-item  [item] = subscription>
+        </app-video-item>
+      </div>
+    </app-swiper-container>
+    <a href="/main/subscriptions">Перейти ко всем подпискам</a>
+  </section>
+  <section class="liked-video">
+    <div class="liked-video__title title">Понравившиеся</div>
+    <app-swiper-container>
+      <div *ngFor="let likedItems of myLiked" class="swiper-slide column">
+        <app-video-item  [item] = likedItems [isVideo] = true>
+        </app-video-item>
+      </div>
+    </app-swiper-container>
+    <a href="/main/playlists">Перейти ко всем подпискам</a>
   </section>
 </article>
+

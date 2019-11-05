@@ -1,10 +1,16 @@
 <div class="video-item">
-  <div class="video-item__title">{{item.snippet.title}}</div>
-  <a class="video-item__link" href="">
-    <img [src]="item.snippet.thumbnails.high.url" alt="">
-    <span class="video-item__description">{{item.snippet.description}}</span>
-  </a>
-  <button class="button" (click)="getSubscriptVideo(item.snippet.resourceId.channelId)">
-    test
-  </button>
+  <ng-container *ngIf="!isVideo">
+    <div class="video-item__title">{{item.snippet.title}}</div>
+    <a class="video-item__link" href="">
+      <img class="video-item__pic" [src]="item.snippet.thumbnails.high.url" alt="">
+      <span class="video-item__description">{{item.snippet.description}}</span>
+    </a>
+    <button class="button" (click)="getSubscriptVideo(item.snippet.resourceId.channelId)">
+      test
+    </button>
+  </ng-container>
+<ng-container *ngIf="isVideo">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/ + item.id"
+          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</ng-container>
 </div>
