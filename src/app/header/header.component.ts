@@ -45,6 +45,7 @@ export class HeaderComponent implements OnInit {
     this.getDeviceType();
     this.isSignIn = this.userService.isAuth();
     this.userService.isAuth$.next(this.isSignIn);
+    console.log(this.userService.isLogedIn());
   }
   public getLinks(): Array<Links> {
     return [

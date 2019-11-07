@@ -34,7 +34,7 @@ export class YoutubeApiService {
   }
   public getUserLikedVideos(channelId?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
-    const part = ['snippet'];
+    const part = ['snippet', 'player', 'recordingDetails', 'contentDetails'];
     // const chart  = ['mostPopular'];
     const myRating = ['like']
     params = params.append('part', part.join(','));

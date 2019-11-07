@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { YoutubeApiService } from '../../shared/services/youtube-api.service';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { UserService } from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +14,12 @@ export class HomeComponent implements OnInit {
   public myLiked: Array<any>;
   constructor(
     private youtubeApiService: YoutubeApiService,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
-    console.log('this.mySubscriptions', this.getSubscriptions());
-    console.log('this.getMyLikedVideos', this.getMyLikedVideos());
+    this.getSubscriptions();
+    this.getMyLikedVideos();
   }
   public getSubscriptions(): any {
     this.youtubeApiService.getUserSubscriptionsList().subscribe(
@@ -36,5 +38,8 @@ export class HomeComponent implements OnInit {
       (error: any) => {
         return error;
       });
+  }
+  public singOut(): void {
+    this.userService.signOut();
   }
 }

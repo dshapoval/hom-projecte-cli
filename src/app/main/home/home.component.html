@@ -3,7 +3,7 @@
     <div class="subscription__title title">Мои подписки</div>
     <app-swiper-container>
       <div *ngFor="let subscription of mySubscriptions" class="swiper-slide column">
-        <app-video-item  [item] = subscription>
+        <app-video-item  [item] = subscription> [isVideo]=false
         </app-video-item>
       </div>
     </app-swiper-container>
@@ -13,11 +13,12 @@
     <div class="liked-video__title title">Понравившиеся</div>
     <app-swiper-container>
       <div *ngFor="let likedItems of myLiked" class="swiper-slide column">
-        <app-video-item  [item] = likedItems [isVideo] = true>
+        <app-video-item  [item]=likedItems [isVideo]=true>
         </app-video-item>
       </div>
     </app-swiper-container>
     <a href="/main/playlists">Перейти ко всем подпискам</a>
   </section>
+  <button class="button" (click)="singOut()">singOut</button>
 </article>
 
