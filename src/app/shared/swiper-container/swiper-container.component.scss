@@ -1,11 +1,7 @@
 @import "../../../assets/scss/base-part";
 
-.swiper-container {
-  width: 100%;
-}
-.swiper-container { overflow: hidden; display: flex; position: relative }
+.swiper-container { width: 100%; overflow: hidden; display: flex; position: relative; padding-bottom: 55px }
 .swiper-wrapper {flex-grow: 1; display: flex; flex-wrap: nowrap!important;}
-//.swiper-slide { flex: 1 0 0; text-align: center; }
 .slider_button {
   bottom: -20px;
   @include mq-tablet {
@@ -14,9 +10,7 @@
     &.swiper-button-next { right: 2px;}
   }
 }
-.swiper-scrollbar {
-  position: absolute;
-  height: 2px;
-  background-color: white;
-  width: 100%;
-}
+.swiper-scrollbar { position: absolute; height: 2px; background-color: white; width: 100%; }
+%swiper-button { position: absolute; bottom: 2px; height: 37px; width: 24px; cursor: pointer; }
+.swiper-button-prev { @extend %swiper-button; left: calc(50% - 85px);}
+.swiper-button-next { @extend %swiper-button; right: calc(50% - 85px);}

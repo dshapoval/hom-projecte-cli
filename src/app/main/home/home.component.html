@@ -17,8 +17,18 @@
         </app-video-item>
       </div>
     </app-swiper-container>
-    <a href="/main/playlists">Перейти ко всем подпискам</a>
+    <a href="/main/playlists">Перейти ко всем видео</a>
   </section>
-  <button class="button" (click)="singOut()">singOut</button>
+  <section class="popular-channels">
+    <div class="popular-channels__title title">Понравившиеся</div>
+    <app-swiper-container>
+      <div *ngFor="let popularItem of popular" class="swiper-slide column">
+        <app-video-item  [item]=popularItem [isVideo]=true>
+        </app-video-item>
+      </div>
+    </app-swiper-container>
+    <a href="/main/playlists">Перейти ко всем Популярным</a>
+  </section>
+  <button class="button" (click)="getPopularVideos('mostPopular', 'UA')">getPopularVideos</button>
 </article>
 

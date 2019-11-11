@@ -35,10 +35,8 @@ export class YoutubeApiService {
   public getUserLikedVideos(channelId?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet', 'player', 'recordingDetails', 'contentDetails'];
-    // const chart  = ['mostPopular'];
     const myRating = ['like']
     params = params.append('part', part.join(','));
-    // params = params.append('chart', chart.join(','));
     params = params.append('myRating', myRating.join(','));
     params = channelId
       ? params.append('channelId', channelId)
@@ -52,6 +50,21 @@ export class YoutubeApiService {
       );
   }
 
+  public getPopularVideo( chart: string, regionCode: string ): Observable<any> {
+    let params: HttpParams = new HttpParams();
+    const part = ['snippet', 'player'];
+    params = params.append('part', part.join(','));
+    params = params.append('chart', chart);
+    params = params.append('regionCode', regionCode);
+
+    return this.http
+      .get(this.bindUrl('/videos'), {params})
+      .pipe(
+        catchError((error: any) => {
+          return throwError(error);
+        })
+      );
+  }
   public getUserSubscriptionsList(channelId?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet', 'contentDetails'];

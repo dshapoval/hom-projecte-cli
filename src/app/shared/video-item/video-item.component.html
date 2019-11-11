@@ -3,16 +3,13 @@
     <div class="video-item__title">{{item.snippet.title}}</div>
     <a class="video-item__link" href="">
       <img class="video-item__pic" [src]="item.snippet.thumbnails.high.url" alt="">
-      <span class="video-item__description">{{item.snippet.description | safeHtml}}</span>
+      <span class="video-item__description">{{item.snippet.description}}</span>
     </a>
     <button class="button" (click)="getSubscriptVideo(item.snippet.resourceId.channelId)">
       test
     </button>
   </ng-container>
-<ng-container *ngIf="isVideo">
-<!--  <iframe #iframe height="200" [src]="sanitizedUrl(item.id)"-->
-<!--          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-  <div [innerHtml]="item?.player?.embedHtml | safeHtml"></div>
-<!--  <button class="button" (click)="getElement()">getElement</button>-->
-</ng-container>
+  <ng-container *ngIf="isVideo">
+    <div [innerHtml]="item?.player?.embedHtml | safeHtml"></div>
+  </ng-container>
 </div>
