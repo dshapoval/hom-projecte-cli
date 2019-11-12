@@ -1,16 +1,36 @@
 @import "../../../assets/scss/base-part";
-.subscriptionm, .liked-video {
+@import "../main.component";
+
+.subscription, .liked-video, .popular-channels {
   margin-top: 16px;
 }
-.title {
+.popular-channels__link, .subscription__link, .liked-video__link {
+  display: inline-flex;
+  align-items: center;
   font-size: 14px;
-  line-height: 1.4;
-  font-weight: 500;
-  @include mq-tablet {
-    font-size: 18px;
-    font-weight: 600;
+  text-decoration: none;
+  color: #ca563f;
+  padding-right: 28px;
+  &:hover {
+    b svg {
+      fill: #ca563f;
+    }
   }
-  @include mq-desctop {
-    font-size: 21px;
+  b {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    background: #343638;
+    border-radius: 50%;
+    padding-left: 3px;
+    svg {
+      width: 7px;
+      height: 10px;
+      fill: #969696;
+      transition: .3s;
+    }
   }
 }

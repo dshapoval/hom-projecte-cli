@@ -2,6 +2,7 @@
 
 .swiper-container { width: 100%; overflow: hidden; display: flex; position: relative; padding-bottom: 55px }
 .swiper-wrapper {flex-grow: 1; display: flex; flex-wrap: nowrap!important;}
+
 .slider_button {
   bottom: -20px;
   @include mq-tablet {
