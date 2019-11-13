@@ -3,9 +3,8 @@
 <div class="wrapper row">
   <div class="small-16">
       <div *ngFor="let video of channelVideos" class="column">
-        <app-video-item  [item]=video
-                         [isVideo]=true>
-        </app-video-item>
+      <iframe #iframe height="200" [src]="sanitizedUrl(video.id)"
+              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
   </div>
 </div>
