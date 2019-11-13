@@ -65,12 +65,15 @@ export class YoutubeApiService {
         })
       );
   }
-  public getUserSubscriptionsList(channelId?: string): Observable<any> {
+  public getUserSubscriptionsList(channelId?: string, maxResults?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet', 'contentDetails'];
     const chart  = ['mostPopular'];
     params = params.append('part', part.join(','));
     params = params.append('chart', chart.join(','));
+    params = maxResults
+      ? params.append('maxResults', maxResults)
+      : params.append('maxResults', '5');
     params = channelId
       ? params.append('channelId', channelId)
       : params.append('mine', 'true');
@@ -99,13 +102,14 @@ export class YoutubeApiService {
         })
       );
   }
-  public getVideoByChannelId(channelId?: string): Observable<any> { //return last downloaded video from channel
+  public getVideoByChannelId(channelId?: string, maxResults?: string): Observable<any> { //return last downloaded video from channel
     let params: HttpParams = new HttpParams();
     const part = ['snippet', 'contentDetails', 'id'];
     params = params.append('part', part.join(','));
     params = channelId
       ? params.append('channelId', channelId)
       : params.append('mine', 'false');
+    params = params.append('maxResults', maxResults);
     return this.http
       .get(this.bindUrl('/activities'), {params})
       .pipe(

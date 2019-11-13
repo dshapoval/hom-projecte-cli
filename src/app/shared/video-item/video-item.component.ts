@@ -17,7 +17,7 @@ export class VideoItemComponent implements OnInit {
   // public iFrameLink: string;
   constructor(
     private youtubeApiService: YoutubeApiService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
 
   ) {
   }

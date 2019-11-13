@@ -1,0 +1,11 @@
+<p>subscription-video works!</p>
+
+<div class="wrapper row">
+  <div class="small-16">
+      <div *ngFor="let video of channelVideos" class="column">
+        <app-video-item  [item]=video
+                         [isVideo]=true>
+        </app-video-item>
+      </div>
+  </div>
+</div>

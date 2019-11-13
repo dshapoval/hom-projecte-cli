@@ -12,7 +12,8 @@ import { SwiperContainerModule } from '../../shared/swiper-container/swiper-cont
     CommonModule,
     SubscriptionsRoutingModule,
     VideoItemModule,
-    SwiperContainerModule
+    SwiperContainerModule,
+
   ],
   declarations: [ SubscriptionsComponent ],
   exports: [ SubscriptionsComponent ]
