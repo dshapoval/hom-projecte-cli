@@ -11,7 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class ChannelVideoComponent implements OnInit {
 
   public channelId: string;
-  public maxResult: string = '10';
+  public maxResult: string = '5';
   public channelVideos: Array<any>;
 
   constructor(
@@ -24,14 +24,18 @@ export class ChannelVideoComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.activatedRoute);
-    this.channelId = this.activatedRoute.params.value.channelId;
-    console.log(this.channelId);
+    this.subscribeForRouteParams();
     this.getSubscriptVideo(this.channelId, this.maxResult);
+  }
+  private subscribeForRouteParams(): void {
+    this.activatedRoute.params.subscribe((param: any) => {
+      this.channelId = param.channelId;
+    });
   }
 
   public sanitizedUrl(id): SafeResourceUrl|string {
-    const url = `https://www.youtube.com/embed/${id}`;
+    console.log(id);
+    const url = `//www.youtube.com/embed/${id}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
@@ -41,6 +45,7 @@ export class ChannelVideoComponent implements OnInit {
         (response: any) => {
           console.log(response);
           this.channelVideos = response.items;
+          console.log(this.channelVideos);
         },
         (error: any) => {
           console.log(error);

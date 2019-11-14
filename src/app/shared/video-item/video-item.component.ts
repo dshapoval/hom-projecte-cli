@@ -24,7 +24,6 @@ export class VideoItemComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.item);
-    // if (this.isVideo) { this.setIframeLink(); }
   }
   public getSubscriptVideo(channelId?: string): any {
     this.youtubeApiService.getVideoByChannelId(channelId)

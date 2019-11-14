@@ -10,7 +10,7 @@ export const SubscriptionsRoutes: Routes = [
     component: SubscriptionsComponent,
   },
   {
-    path: 'channel/:name/:channelId',
+    path: 'channel/:channelId',
     // component: ChannelVideoComponent
     loadChildren: () => import('./channel-video/channel-video.module').then(m => m.ChannelVideoModule),
   }

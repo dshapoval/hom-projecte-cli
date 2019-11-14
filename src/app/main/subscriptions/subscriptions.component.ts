@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { YoutubeApiService } from '../../shared/services/youtube-api.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-subscriptions',
@@ -13,6 +14,7 @@ export class SubscriptionsComponent implements OnInit {
   private readonly maxResults: string = '50';
   constructor(
     private youtubeApiService: YoutubeApiService,
+    private sanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
@@ -26,5 +28,10 @@ export class SubscriptionsComponent implements OnInit {
       (error: any) => {
         return error;
       });
+  }
+
+  public sanitizedUrl(id): SafeResourceUrl|string {
+    const url = `https://www.youtube.com/embed/${id}`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

@@ -1,10 +1,8 @@
 <p>subscription-video works!</p>
 
-<div class="wrapper row">
-  <div class="small-16">
+<div class="wrapper row small-16 small-up-2 medium-up-3 large-up-5">
       <div *ngFor="let video of channelVideos" class="column">
-      <iframe #iframe height="200" [src]="sanitizedUrl(video.id)"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe #iframe height="200" [src]="sanitizedUrl(video.contentDetails?.upload?.videoId)"
+              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen fs="1"></iframe>
       </div>
-  </div>
 </div>

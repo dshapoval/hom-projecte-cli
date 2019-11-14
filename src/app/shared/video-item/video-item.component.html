@@ -1,7 +1,7 @@
 <div class="video-item">
   <ng-container *ngIf="!isVideo">
     <div class="video-item__title">{{item.snippet.title}}</div>
-    <a class="video-item__link" [routerLink]="['/main/subscriptions/channel/' + item.snippet.title + '/' + item.snippet.resourceId.channelId]">
+    <a class="video-item__link" [routerLink]="['/main/subscriptions/channel' + '/'  + item.snippet.resourceId.channelId]">
       <img class="video-item__pic" [src]="item.snippet.thumbnails.high.url" alt="">
       <span class="video-item__description">{{item.snippet.description}}</span>
     </a>

@@ -104,7 +104,7 @@ export class YoutubeApiService {
   }
   public getVideoByChannelId(channelId?: string, maxResults?: string): Observable<any> { //return last downloaded video from channel
     let params: HttpParams = new HttpParams();
-    const part = ['snippet', 'contentDetails', 'id'];
+    const part = ['contentDetails'];
     params = params.append('part', part.join(','));
     params = channelId
       ? params.append('channelId', channelId)
