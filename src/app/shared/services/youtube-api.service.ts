@@ -102,13 +102,16 @@ export class YoutubeApiService {
         })
       );
   }
-  public getVideoByChannelId(channelId?: string, maxResults?: string): Observable<any> { //return last downloaded video from channel
+  public getVideoByChannelId(channelId?: string, maxResults?: string, pageToken?: string): Observable<any> { //return last downloaded video from channel
     let params: HttpParams = new HttpParams();
     const part = ['contentDetails'];
     params = params.append('part', part.join(','));
     params = channelId
       ? params.append('channelId', channelId)
       : params.append('mine', 'false');
+    if (pageToken) {
+      params =  params.append('pageToken', pageToken);
+    }
     params = params.append('maxResults', maxResults);
     return this.http
       .get(this.bindUrl('/activities'), {params})
