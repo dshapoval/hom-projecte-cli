@@ -17,6 +17,20 @@ export class YoutubeApiService {
     return AppConstants.YOUTUBE_API_URL + url;
   }
 
+  public getVideoById(videoId: string): Observable<any> {
+    let params: HttpParams = new HttpParams();
+    const part = ['player'];
+    params = params.append('part', part.join(','));
+    params = params.append('id', videoId)
+    return this.http
+      .get(this.bindUrl('/videos'), {params})
+      .pipe(
+        catchError((error: any) => {
+          return throwError(error);
+        })
+      );
+  }
+
   public getPlaylist(channelId?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet'];
@@ -32,6 +46,7 @@ export class YoutubeApiService {
         })
       );
   }
+
   public getUserLikedVideos(channelId?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet', 'player', 'recordingDetails', 'contentDetails'];
@@ -65,6 +80,7 @@ export class YoutubeApiService {
         })
       );
   }
+
   public getUserSubscriptionsList(channelId?: string, maxResults?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet', 'contentDetails'];
@@ -102,9 +118,10 @@ export class YoutubeApiService {
         })
       );
   }
+
   public getVideoByChannelId(channelId?: string, maxResults?: string, pageToken?: string): Observable<any> { //return last downloaded video from channel
     let params: HttpParams = new HttpParams();
-    const part = ['contentDetails'];
+    const part = ['snippet, contentDetails'];
     params = params.append('part', part.join(','));
     params = channelId
       ? params.append('channelId', channelId)

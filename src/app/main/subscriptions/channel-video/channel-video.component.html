@@ -1,11 +1,26 @@
 <article class="wrapper row channel-video">
   <div class="title"></div>
+<!--  <section class="row small-up-2 medium-up-3 large-up-5">-->
+<!--    <div *ngFor="let video of channelVideos" class="column">-->
+<!--      <iframe #iframe height="200" [src]="sanitizedUrl(video.contentDetails?.upload?.videoId)"-->
+<!--              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen fs="1"></iframe>-->
+<!--    </div>-->
+
+<!--    <button class="more-videos button button-red" (click)="getSubscriptVideo(channelId, maxResult, nextPageToken)">Показать еще</button>-->
+<!--  </section>-->
   <section class="row small-up-2 medium-up-3 large-up-5">
     <div *ngFor="let video of channelVideos" class="column">
-      <iframe #iframe height="200" [src]="sanitizedUrl(video.contentDetails?.upload?.videoId)"
-              frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen fs="1"></iframe>
+      <app-video-item [item]=video
+                      [isIframe]="false"
+                      (getVideoId)="receiveVideoItem($event)">
+      </app-video-item>
     </div>
 
     <button class="more-videos button button-red" (click)="getSubscriptVideo(channelId, maxResult, nextPageToken)">Показать еще</button>
+    <div>
+    <app-video-item [isIframe] = "true"
+                    [item] = "selectedItem"></app-video-item>
+      <div [innerHtml]="selectedItem?.player?.embedHtml"></div>
+    </div>
   </section>
 </article>

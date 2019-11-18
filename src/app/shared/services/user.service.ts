@@ -71,7 +71,6 @@ export class UserService {
 
   public isUserSignedIn(): void {
     this.isSignIn = !!localStorage.getItem(AppConstants.LOCAL_STORAGE_KEY);
-    // console.log('i am userservice', this.isSignIn);
     this.isSignIn ? this.navigateToHome() : this.navigateToLogin();
   }
 

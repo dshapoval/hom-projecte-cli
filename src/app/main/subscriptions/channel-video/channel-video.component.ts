@@ -14,6 +14,8 @@ export class ChannelVideoComponent implements OnInit {
   public maxResult: string = '5';
   public channelVideos: Array<any> = [];
   public nextPageToken: string;
+  public selectedItem: any
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -55,4 +57,9 @@ export class ChannelVideoComponent implements OnInit {
           console.log(error);
         });
   }
+  public receiveVideoItem(e): void {
+    console.log('e', e);
+    this.selectedItem = e;
+  }
+
 }

@@ -19,8 +19,8 @@
      <div class="small-16">
        <app-swiper-container>
          <div *ngFor="let subscription of mySubscriptions" class="swiper-slide column">
-           <app-video-item  [item] = subscription> [isVideo]=false
-           </app-video-item>
+           <app-channel-item [item] = subscription>
+           </app-channel-item>
          </div>
        </app-swiper-container>
      </div>
@@ -47,7 +47,7 @@
         <app-swiper-container>
           <div *ngFor="let likedItems of myLiked" class="swiper-slide column">
             <app-video-item  [item]=likedItems
-                             [isVideo]=true>
+                             [isIframe]="true">
             </app-video-item>
           </div>
         </app-swiper-container>
@@ -75,7 +75,7 @@
         <app-swiper-container>
           <div *ngFor="let popularItem of popular" class="swiper-slide column">
             <app-video-item  [item]=popularItem
-                             [isVideo]=true>
+                             [isIframe]="true">
             </app-video-item>
           </div>
         </app-swiper-container>

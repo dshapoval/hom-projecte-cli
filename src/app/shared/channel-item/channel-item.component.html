@@ -1,0 +1,7 @@
+<div class="channel-item">
+    <div class="channel-item__title">{{item.snippet.title}}</div>
+    <a class="channel-item__link" [routerLink]="['/main/subscriptions/channel' + '/'  + item.snippet.resourceId.channelId]">
+      <img class="channel-item__pic" [src]="item.snippet.thumbnails.high.url" alt="">
+      <span class="channel-item__description">{{item.snippet.description}}</span>
+    </a>
+</div>

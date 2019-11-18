@@ -1,15 +1,10 @@
 <div class="video-item">
-  <ng-container *ngIf="!isVideo">
-    <div class="video-item__title">{{item.snippet.title}}</div>
-    <a class="video-item__link" [routerLink]="['/main/subscriptions/channel' + '/'  + item.snippet.resourceId.channelId]">
-      <img class="video-item__pic" [src]="item.snippet.thumbnails.high.url" alt="">
-      <span class="video-item__description">{{item.snippet.description}}</span>
-    </a>
-    <!--    <button class="button" (click)="getSubscriptVideo(item.snippet.resourceId.channelId)">-->
-    <!--      test-->
-    <!--    </button>-->
-  </ng-container>
-  <ng-container *ngIf="isVideo">
+  <ng-container *ngIf="isIframe">
     <div [innerHtml]="item?.player?.embedHtml | safeHtml"></div>
+  </ng-container>
+  <ng-container *ngIf="!isIframe">
+    <img class="channel-item__pic" [src]="item.snippet.thumbnails.high.url" alt="">
+    <div class="channel-item__title">{{item.snippet.title}}</div>
+    <button (click)="getSelectedVideo(item.contentDetails)">play</button>
   </ng-container>
 </div>

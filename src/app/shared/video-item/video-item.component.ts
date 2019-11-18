@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { YoutubeApiService } from '../services/youtube-api.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -9,16 +9,17 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class VideoItemComponent implements OnInit {
 
+  private selectedVideoItem: any;
+
   @Input() public item: any;
-  @Input() public isVideo: boolean;
-  // @ViewChild('iframe', { static: false } ) iframe: ElementRef;
+  @Input() public isIframe: boolean;
+  @Output() public getVideoId = new EventEmitter<any>();
+
   public youtubePlayer = 'https://www.youtube.com/embed/';
-  // private videoId: string;
-  // public iFrameLink: string;
+
   constructor(
     private youtubeApiService: YoutubeApiService,
     private sanitizer: DomSanitizer,
-
   ) {
   }
 
@@ -34,6 +35,24 @@ export class VideoItemComponent implements OnInit {
         (error: any) => {
           console.log(error);
         });
+  }
+
+  public getSelectedVideo(contentDetails): void {
+    // console.log('contentDetails.upload.videoId', contentDetails.upload.videoId);
+    // console.log('contentDetails.playlistItem.resourceId', contentDetails.playlistItem);
+    const videoId = contentDetails && contentDetails.upload && contentDetails.upload.videoId
+                    ? contentDetails.upload.videoId
+                    : contentDetails.playlistItem.resourceId.videoId;
+    this.youtubeApiService.getVideoById(videoId)
+      .subscribe(
+        (response: any) => {
+          this.selectedVideoItem = response.items[0];
+          this.getVideoId.emit(this.selectedVideoItem);
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
   }
 
   public sanitizedUrl(id): SafeResourceUrl|string {

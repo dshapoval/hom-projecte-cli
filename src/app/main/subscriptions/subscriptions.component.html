@@ -3,8 +3,8 @@
      <div class="subscription__title title">Мои подписки</div>
      <div class="row small-up-2 medium-up-3 large-up-5">
        <div *ngFor="let subscription of mySubscriptions" class="column">
-         <app-video-item  [item] = subscription>
-         </app-video-item>
+         <app-channel-item  [item] = subscription>
+         </app-channel-item>
        </div>
      </div>
   <!--   <button class="button" (click)="test()"></button>-->

@@ -8,6 +8,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   templateUrl: './subscriptions.component.html',
   styleUrls: ['./subscriptions.component.scss']
 })
+
 export class SubscriptionsComponent implements OnInit {
   public config: SwiperConfigInterface;
   public mySubscriptions: Array<any>
@@ -18,8 +19,9 @@ export class SubscriptionsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('subs', this.getSubscriptions(0, this.maxResults));
+    this.getSubscriptions(0, this.maxResults);
   }
+
   public getSubscriptions(channelId? , maxResults?): any {
     this.youtubeApiService.getUserSubscriptionsList(channelId , maxResults).subscribe(
       (response: any) => {

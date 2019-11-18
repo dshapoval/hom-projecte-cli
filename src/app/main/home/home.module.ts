@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { VideoItemModule } from '../../shared/video-item/video-item.module';
 import { SwiperContainerModule } from '../../shared/swiper-container/swiper-container.module';
+import { ChannelItemModule } from '../../shared/channel-item/channel-item.module';
 
 
 
@@ -12,7 +13,8 @@ import { SwiperContainerModule } from '../../shared/swiper-container/swiper-cont
     CommonModule,
     HomeRoutingModule,
     VideoItemModule,
-    SwiperContainerModule
+    SwiperContainerModule,
+    ChannelItemModule
   ],
   declarations: [ HomeComponent ],
   exports: [ HomeComponent ],
