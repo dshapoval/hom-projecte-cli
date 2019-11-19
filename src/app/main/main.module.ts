@@ -6,7 +6,7 @@ import { SignInModule } from '../sign-in/sign-in.module';
 import { WatchLaterModule } from './watch-later/watch-later.module';
 import { TrailersModule } from './trailers/trailers.module';
 import { SubscriptionsModule } from './subscriptions/subscriptions.module';
-import { NewItemsModule } from './new-items/new-items.module';
+import { LikedModule } from './liked/liked.module';
 import { RecommendationsModule } from './recommendations/recommendations.module';
 import { TopModule } from './top/top.module';
 import { HomeModule } from './home/home.module';
@@ -21,7 +21,7 @@ import { HomeModule } from './home/home.module';
     WatchLaterModule,
     TrailersModule,
     SubscriptionsModule,
-    NewItemsModule,
+    LikedModule,
     TopModule,
     RecommendationsModule,
     HomeModule,

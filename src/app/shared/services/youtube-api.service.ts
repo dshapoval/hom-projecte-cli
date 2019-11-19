@@ -47,15 +47,16 @@ export class YoutubeApiService {
       );
   }
 
-  public getUserLikedVideos(channelId?: string): Observable<any> {
+  public getUserLikedVideos(maxResults?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
-    const part = ['snippet', 'player', 'recordingDetails', 'contentDetails'];
-    const myRating = ['like']
+    const part = ['snippet', 'player'];
+    const myRating = ['like'];
     params = params.append('part', part.join(','));
     params = params.append('myRating', myRating.join(','));
-    params = channelId
-      ? params.append('channelId', channelId)
-      : params.append('mine', 'true');
+    params = params.append('mine', 'true');
+    params = maxResults
+      ? params.append('maxResults', maxResults)
+      : params.append('maxResult', '5');
     return this.http
       .get(this.bindUrl('/videos'), {params})
       .pipe(

@@ -3,8 +3,9 @@
     <div [innerHtml]="item?.player?.embedHtml | safeHtml"></div>
   </ng-container>
   <ng-container *ngIf="!isIframe">
-    <img class="channel-item__pic" [src]="item.snippet.thumbnails.high.url" alt="">
+    <button class="button-play" (click)="getSelectedVideo(item)">
+      <img class="channel-item__pic" [src]="item?.snippet?.thumbnails?.high?.url" alt="">
+    </button>
     <div class="channel-item__title">{{item.snippet.title}}</div>
-    <button (click)="getSelectedVideo(item.contentDetails)">play</button>
   </ng-container>
 </div>

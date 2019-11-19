@@ -31,9 +31,7 @@ export class HomeComponent implements OnInit {
         this.mySubscriptions = response.items;
       },
       (error: any) => {
-       this.userService.isAuth$.next(false);
-       localStorage.removeItem(AppConstants.LOCAL_STORAGE_KEY);
-       this.userService.isUserSignedIn();
+        return error;
       });
   }
 
@@ -43,9 +41,7 @@ export class HomeComponent implements OnInit {
         this.myLiked = response.items;
       },
       (error: any) => {
-        this.userService.isAuth$.next(false);
-        localStorage.removeItem(AppConstants.LOCAL_STORAGE_KEY);
-        this.userService.isUserSignedIn();
+        return error;
       });
   }
 
@@ -56,9 +52,7 @@ export class HomeComponent implements OnInit {
         console.log(response.items);
       },
       (error: any) => {
-        this.userService.isAuth$.next(false);
-        localStorage.removeItem(AppConstants.LOCAL_STORAGE_KEY);
-        this.userService.isUserSignedIn();
+        return error;
       });
   }
 

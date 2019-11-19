@@ -24,8 +24,15 @@ export class UserService {
 
   public getToken(): string {
     const token: string = localStorage.getItem(AppConstants.LOCAL_STORAGE_KEY);
+    const tokenExpire: number = +localStorage.getItem(AppConstants.EXPIRE_AT);
+    const date = new Date();
     if (!token) {
       throw new Error('no token set , authentication required');
+    }
+    if ( date.getTime() > tokenExpire ) {
+        localStorage.removeItem(AppConstants.LOCAL_STORAGE_KEY);
+        this.isAuth$.next(false);
+        this.isUserSignedIn();
     }
     return localStorage.getItem(AppConstants.LOCAL_STORAGE_KEY);
   }
@@ -33,6 +40,7 @@ export class UserService {
   public signIn() {
      this.googleAuth.getAuth()
       .subscribe((auth) => {
+        console.log(auth);
         auth.signIn().then(
           res => this.signInSuccessHandler(res),
           err => this.signInErrorHandler(err)
@@ -41,27 +49,22 @@ export class UserService {
   }
 
   public signOut(): void {
-    this.googleAuth.getAuth().subscribe((auth) => {
-      try {
-        auth.signOut();
-      } catch (e) {
-        console.error(e);
-      }
       localStorage.removeItem(AppConstants.LOCAL_STORAGE_KEY);
       this.isUserSignedIn();
       this.isAuth$.next(false);
-      console.log('{{this.userService.isAuth$ | async}}', this.isAuth$ );
-    });
   }
 
   private signInSuccessHandler(res: GoogleUser) {
     this.user = res;
+    console.log(this.user);
     localStorage.setItem(
       AppConstants.LOCAL_STORAGE_KEY, res.getAuthResponse().access_token
     );
+    localStorage.setItem(
+      AppConstants.EXPIRE_AT, res.getAuthResponse().expires_at.toString()
+    );
     this.isUserSignedIn();
     this.isAuth$.next(true);
-    console.log('isUserSignedIn', this.isAuth$ );
 
   }
 
@@ -85,6 +88,7 @@ export class UserService {
   public isAuth(): boolean {
     return this.isSignIn = !!localStorage.getItem(AppConstants.LOCAL_STORAGE_KEY);
   }
+
   public isLogedIn(): Observable<boolean> {
     return this.isAuth$;
   }

@@ -45,16 +45,14 @@ export class HeaderComponent implements OnInit {
     this.getDeviceType();
     this.isSignIn = this.userService.isAuth();
     this.userService.isAuth$.next(this.isSignIn);
-    console.log(this.userService.isLogedIn());
   }
   public getLinks(): Array<Links> {
     return [
       {path: 'main/home', label: 'Главная', index: 0},
       {path: 'main/subscriptions', label: 'Подписки', index: 1},
-      {path: 'main/playlists', label: 'Мои плейлисты', index: 2},
-      {path: 'main/recommendations', label: 'Рекомендации', index: 3},
-      {path: 'main/watch-later', label: 'Смотреть позже', index: 4},
-      {path: 'main/top', label: 'ТОП', index: 5},
+      {path: 'main/liked', label: 'Понравившиеся', index: 2},
+      {path: 'main/recommendations', label: 'Популярные', index: 3},
+      {path: 'main/watch-later', label: 'Поиск', index: 4},
     ];
   }
   public setMainMenuState(): void {

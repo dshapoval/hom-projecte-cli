@@ -4,6 +4,8 @@ export class AppConstants {
 
   public static LOCAL_STORAGE_KEY = 'accessToken';
 
+  public static EXPIRE_AT = 'expireTimeStamp';
+
   public static YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
 
   public static getGapiClientConfig(): NgGapiClientConfig {

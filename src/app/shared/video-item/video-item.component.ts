@@ -14,18 +14,16 @@ export class VideoItemComponent implements OnInit {
   @Input() public item: any;
   @Input() public isIframe: boolean;
   @Output() public getVideoId = new EventEmitter<any>();
+  @Output() public sendPlayer = new EventEmitter<any>();
 
   public youtubePlayer = 'https://www.youtube.com/embed/';
 
   constructor(
     private youtubeApiService: YoutubeApiService,
     private sanitizer: DomSanitizer,
-  ) {
-  }
+  ) {}
 
-  ngOnInit() {
-    console.log(this.item);
-  }
+  ngOnInit() {}
   public getSubscriptVideo(channelId?: string): any {
     this.youtubeApiService.getVideoByChannelId(channelId)
       .subscribe(
@@ -37,22 +35,28 @@ export class VideoItemComponent implements OnInit {
         });
   }
 
-  public getSelectedVideo(contentDetails): void {
-    // console.log('contentDetails.upload.videoId', contentDetails.upload.videoId);
-    // console.log('contentDetails.playlistItem.resourceId', contentDetails.playlistItem);
-    const videoId = contentDetails && contentDetails.upload && contentDetails.upload.videoId
-                    ? contentDetails.upload.videoId
-                    : contentDetails.playlistItem.resourceId.videoId;
-    this.youtubeApiService.getVideoById(videoId)
-      .subscribe(
-        (response: any) => {
-          this.selectedVideoItem = response.items[0];
-          this.getVideoId.emit(this.selectedVideoItem);
-        },
-        (error: any) => {
-          console.log(error);
-        }
-      );
+  public getSelectedVideo(item): void {
+    if (item.player) {
+      this.sendClickedItem(item);
+    } else {
+      const videoId = item && item.contentDetails && item.contentDetails.upload && item.contentDetails.upload.videoId
+                    ? item.contentDetails.upload.videoId
+                    : item.contentDetails.playlistItem.resourceId.videoId;
+      this.youtubeApiService.getVideoById(videoId)
+        .subscribe(
+          (response: any) => {
+            this.selectedVideoItem = response.items[0];
+            this.getVideoId.emit(this.selectedVideoItem);
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        );
+    }
+  }
+
+  public sendClickedItem(player): void {
+    this.sendPlayer.emit(player);
   }
 
   public sanitizedUrl(id): SafeResourceUrl|string {

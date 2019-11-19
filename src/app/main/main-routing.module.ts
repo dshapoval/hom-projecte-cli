@@ -16,6 +16,10 @@ export const MainRoutes: Routes = [
         loadChildren: () => import('./subscriptions/subscriptions.module').then(m => m.SubscriptionsModule),
       },
       {
+        path: 'liked',
+        loadChildren: () => import('./liked/liked.module').then(m => m.LikedModule),
+      },
+      {
         path: 'recommendations',
         loadChildren: () => import('./recommendations/recommendations.module').then(m => m.RecommendationsModule),
       },

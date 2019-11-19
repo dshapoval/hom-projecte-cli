@@ -6,30 +6,29 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
   selector: 'app-channel-video',
   templateUrl: './channel-video.component.html',
-  styleUrls: ['./channel-video.component.scss']
+  styleUrls: ['./channel-video.component.scss'],
 })
 export class ChannelVideoComponent implements OnInit {
 
   public channelId: string;
-  public maxResult: string = '5';
+  public maxResult: string = '15';
   public channelVideos: Array<any> = [];
   public nextPageToken: string;
-  public selectedItem: any
-
+  public selectedItem: any;
+  public showIframe: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private youtubeApiService: YoutubeApiService,
     private sanitizer: DomSanitizer,
-
   ) {
-
   }
 
   ngOnInit() {
     this.subscribeForRouteParams();
     this.getSubscriptVideo(this.channelId, this.maxResult, 0);
   }
+
   private subscribeForRouteParams(): void {
     this.activatedRoute.params.subscribe((param: any) => {
       this.channelId = param.channelId;
@@ -37,7 +36,6 @@ export class ChannelVideoComponent implements OnInit {
   }
 
   public sanitizedUrl(id): SafeResourceUrl|string {
-    console.log(id);
     const url = `//www.youtube.com/embed/${id}`;
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
@@ -58,8 +56,12 @@ export class ChannelVideoComponent implements OnInit {
         });
   }
   public receiveVideoItem(e): void {
-    console.log('e', e);
     this.selectedItem = e;
+    this.showIframe = true;
+  }
+
+  public closeIframe(): void {
+    this.showIframe = false;
   }
 
 }
