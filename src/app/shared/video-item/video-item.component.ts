@@ -1,11 +1,12 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { YoutubeApiService } from '../services/youtube-api.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-video-item',
   templateUrl: './video-item.component.html',
-  styleUrls: ['./video-item.component.scss']
+  styleUrls: ['./video-item.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class VideoItemComponent implements OnInit {
 

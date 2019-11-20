@@ -47,7 +47,7 @@ export class YoutubeApiService {
       );
   }
 
-  public getUserLikedVideos(maxResults?: string): Observable<any> {
+  public getUserLikedVideos(maxResults?: string, pageToken?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet', 'player'];
     const myRating = ['like'];
@@ -57,6 +57,7 @@ export class YoutubeApiService {
     params = maxResults
       ? params.append('maxResults', maxResults)
       : params.append('maxResult', '5');
+    params = pageToken ? params.append('pageToken', pageToken) : params;
     return this.http
       .get(this.bindUrl('/videos'), {params})
       .pipe(
@@ -66,13 +67,18 @@ export class YoutubeApiService {
       );
   }
 
-  public getPopularVideo( chart: string, regionCode: string ): Observable<any> {
+  public getPopularVideo( chart: string, regionCode: string, maxResults?: string, nextPageToken?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet', 'player'];
     params = params.append('part', part.join(','));
     params = params.append('chart', chart);
     params = params.append('regionCode', regionCode);
-
+    params = maxResults
+      ? params.append('maxResults', maxResults)
+      : params.append('maxResult', '5');
+    params = nextPageToken
+      ? params.append('maxResults', maxResults)
+      : params;
     return this.http
       .get(this.bindUrl('/videos'), {params})
       .pipe(
@@ -120,7 +126,7 @@ export class YoutubeApiService {
       );
   }
 
-  public getVideoByChannelId(channelId?: string, maxResults?: string, pageToken?: string): Observable<any> { //return last downloaded video from channel
+  public getVideoByChannelId(channelId?: string, maxResults?: string, pageToken?: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet, contentDetails'];
     params = params.append('part', part.join(','));

@@ -1,7 +1,7 @@
 <article class="wrapper row liked">
   <div class="title"></div>
   <section class="row small-up-2 medium-up-3 large-up-5">
-    <div *ngFor="let video of myLiked" class="column">
+    <div *ngFor="let video of popularVideos" class="column">
       <app-video-item [item] = video
                       [isIframe]="false"
                       (sendPlayer)="receiveVideoItem($event)">
@@ -13,5 +13,5 @@
       </app-video-item>
     </div>
   </section>
-  <button class="more-videos button button-red" [disabled] = "isDisabled" (click)="getMyLikedVideos(maxResult, nextPageToken)">Показать еще</button>
+  <button class="more-videos button button-red"  [disabled]="isDisabled" (click)="getPopularVideos('mostPopular', 'UA', maxResult, nextPageToken)">Показать еще</button>
 </article>

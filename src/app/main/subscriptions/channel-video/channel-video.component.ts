@@ -44,12 +44,8 @@ export class ChannelVideoComponent implements OnInit {
     this.youtubeApiService.getVideoByChannelId(channelId, maxResult, pageToken)
       .subscribe(
         (response: any) => {
-          console.log(response);
-
           this.channelVideos = this.channelVideos.concat(response.items);
           this.nextPageToken = response.nextPageToken;
-          console.log(this.channelVideos);
-          console.log('this.nextPageToken', this.nextPageToken);
         },
         (error: any) => {
           console.log(error);

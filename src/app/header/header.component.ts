@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit {
       {path: 'main/home', label: 'Главная', index: 0},
       {path: 'main/subscriptions', label: 'Подписки', index: 1},
       {path: 'main/liked', label: 'Понравившиеся', index: 2},
-      {path: 'main/recommendations', label: 'Популярные', index: 3},
+      {path: 'main/popular', label: 'Популярные', index: 3},
       {path: 'main/watch-later', label: 'Поиск', index: 4},
     ];
   }

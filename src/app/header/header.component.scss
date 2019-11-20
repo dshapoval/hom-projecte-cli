@@ -66,9 +66,9 @@
 }
 .log-in-block {
   display: flex;
-  flex-direction: column;
+  align-items: center;
 }
-.sign-in__link, .registration__link, .sign-out__button{
+.sign-in__link, .sign-out__button{
   display: block;
   color: white;
   line-height: 28px;

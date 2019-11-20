@@ -12,6 +12,8 @@ export class LikedComponent implements OnInit {
   public myLiked: Array<any> = [];
   public showIframe: boolean = false;
   public selectedItem: any;
+  public nextPageToken: string;
+  public isDisabled: boolean = false;
 
   constructor(
     private youtubeApiService: YoutubeApiService
@@ -21,11 +23,13 @@ export class LikedComponent implements OnInit {
     this.getMyLikedVideos(this.maxResult);
   }
 
-  public getMyLikedVideos(maxResult): any {
-    this.youtubeApiService.getUserLikedVideos(maxResult).subscribe(
+  public getMyLikedVideos(maxResult, pageToken?): any {
+    this.youtubeApiService.getUserLikedVideos(maxResult, pageToken).subscribe(
       (response: any) => {
-        this.myLiked = response.items;
-        console.log(this.myLiked);
+        console.log(response);
+        this.myLiked = this.myLiked.concat(response.items);
+        console.log(response.nextPageToken);
+        this.nextPageToken = response.nextPageToken && this.nextPageToken !== response.nextPageToken ? response.nextPageToken : this.isDisabled = true ;
       },
       (error: any) => {
         return error;

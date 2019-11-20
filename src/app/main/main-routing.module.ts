@@ -20,27 +20,13 @@ export const MainRoutes: Routes = [
         loadChildren: () => import('./liked/liked.module').then(m => m.LikedModule),
       },
       {
-        path: 'recommendations',
-        loadChildren: () => import('./recommendations/recommendations.module').then(m => m.RecommendationsModule),
+        path: 'popular',
+        loadChildren: () => import('./popular/popular.module').then(m => m.PopularModule),
       },
       {
         path: 'top',
         loadChildren: () => import('./top/top.module').then(m => m.TopModule),
       },
-      {
-        path: 'trailers',
-        loadChildren: () => import('./trailers/trailers.module').then(m => m.TrailersModule),
-      },
-      {
-        path: 'watch-later',
-        loadChildren: () => import('./watch-later/watch-later.module').then(m => m.WatchLaterModule),
-      }
-      ,
-      {
-        path: 'sign-in',
-        loadChildren: () => import('./watch-later/watch-later.module').then(m => m.WatchLaterModule),
-      }
-      ,
       {
         path: '',
         redirectTo: 'home',
