@@ -22,3 +22,7 @@ html {
     background: darken(#bebebe, 20%);
   }
 }
+.button-red[disabled] {
+  background: lighten(#ff0000, 20%);
+  cursor: not-allowed;
+}

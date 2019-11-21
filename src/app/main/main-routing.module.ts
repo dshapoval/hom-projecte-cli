@@ -24,8 +24,8 @@ export const MainRoutes: Routes = [
         loadChildren: () => import('./popular/popular.module').then(m => m.PopularModule),
       },
       {
-        path: 'top',
-        loadChildren: () => import('./top/top.module').then(m => m.TopModule),
+        path: 'search',
+        loadChildren: () => import('./search/search.module').then(m => m.SearchModule),
       },
       {
         path: '',

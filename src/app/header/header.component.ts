@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
       {path: 'main/subscriptions', label: 'Подписки', index: 1},
       {path: 'main/liked', label: 'Понравившиеся', index: 2},
       {path: 'main/popular', label: 'Популярные', index: 3},
-      {path: 'main/watch-later', label: 'Поиск', index: 4},
+      {path: 'main/search', label: 'Поиск', index: 4},
     ];
   }
   public setMainMenuState(): void {

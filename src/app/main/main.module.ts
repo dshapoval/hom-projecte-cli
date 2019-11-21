@@ -5,9 +5,9 @@ import { MainRoutingModule } from './main-routing.module';
 import { SignInModule } from '../sign-in/sign-in.module';
 import { SubscriptionsModule } from './subscriptions/subscriptions.module';
 import { LikedModule } from './liked/liked.module';
-import { TopModule } from './top/top.module';
 import { HomeModule } from './home/home.module';
 import { PopularModule } from './popular/popular.module';
+import { SearchModule } from './search/search.module';
 
 
 
@@ -18,10 +18,10 @@ import { PopularModule } from './popular/popular.module';
     SignInModule,
     SubscriptionsModule,
     LikedModule,
-    TopModule,
     HomeModule,
     SignInModule,
-    PopularModule
+    PopularModule,
+    SearchModule
   ],
   declarations: [ MainComponent ],
   exports: [ MainComponent ]

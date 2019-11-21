@@ -145,4 +145,32 @@ export class YoutubeApiService {
         })
       );
   }
+  public createUriParams(data: any): HttpParams {
+    let params = new HttpParams();
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        if (data[key]) {
+          params = params.append(key, data[key]);
+        }
+      }
+    }
+    return params;
+  }
+
+  public searchVideo(searhPrams?): Observable<any> {
+    let params: HttpParams = new HttpParams();
+    const part = ['snippet'];
+    params = this.createUriParams(searhPrams);
+    params = params.append('part', part.join(','));
+    params =  params.append('relevanceLanguage', 'ru');
+
+    console.log( 'searhPram', params);
+    return this.http
+      .get(this.bindUrl('/search'), {params})
+      .pipe(
+        catchError((error: any) => {
+          return throwError(error);
+        })
+      );
+  }
 }
