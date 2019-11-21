@@ -160,11 +160,11 @@ export class YoutubeApiService {
   public searchVideo(searhPrams?): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet'];
+    console.log(typeof searhPrams.maxResult)
     params = this.createUriParams(searhPrams);
     params = params.append('part', part.join(','));
     params =  params.append('relevanceLanguage', 'ru');
 
-    console.log( 'searhPram', params);
     return this.http
       .get(this.bindUrl('/search'), {params})
       .pipe(

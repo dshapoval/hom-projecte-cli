@@ -42,7 +42,6 @@ export class PopularComponent implements OnInit {
   }
 
   public receiveVideoItem(e): void {
-    console.log(e);
     this.selectedItem = e;
     this.showIframe = true;
   }

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './search.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchRoutingModule } from './search-routing.module';
+import {VideoItemModule} from "../../shared/video-item/video-item.module";
 
 
 
@@ -10,7 +11,8 @@ import { SearchRoutingModule } from './search-routing.module';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    SearchRoutingModule
+    SearchRoutingModule,
+    VideoItemModule
   ],
   declarations: [ SearchComponent ],
   exports: [ SearchComponent ]

@@ -29,7 +29,20 @@
       </div>
     </form>
   </section>
-  <section class="search-result">
-
+  <section class="search-result row small-16 small-up-2 medium-up-3 large-up-5">
+    <ng-template ngFor let-video [ngForOf]="searchResult">
+      <div class="column">
+        <button class="button-play" (click)="getVieoById(video?.id?.videoId)">
+          <img class="channel-item__pic" [src]="video?.snippet?.thumbnails?.high?.url" alt="">
+        </button>
+        <div class="channel-item__title">{{video.snippet.title}}</div>
+      </div>
+    </ng-template>
+    <div class="video-wrapper" *ngIf="showIframe" (click)="closeIframe()">
+      <app-video-item [isIframe]="true"
+                      [item]="selectedItem">
+      </app-video-item>
+    </div>
   </section>
+  <button class="more-videos button button-red"  [disabled]="isDisabled">Показать еще</button>
 </article>
