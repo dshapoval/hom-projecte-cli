@@ -31,9 +31,11 @@ export class UserService {
       throw new Error('no token set , authentication required');
     }
     if ( date.getTime() > tokenExpire ) {
-        localStorage.removeItem(AppConstants.LOCAL_STORAGE_KEY);
-        this.isAuth$.next(false);
-        this.isUserSignedIn();
+        // localStorage.removeItem(AppConstants.LOCAL_STORAGE_KEY);
+        // localStorage.removeItem(AppConstants.USER_NAME);
+        // this.isAuth$.next(false);
+        // this.isUserSignedIn();
+      this.signOut();
     }
     return localStorage.getItem(AppConstants.LOCAL_STORAGE_KEY);
   }
