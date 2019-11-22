@@ -13,7 +13,7 @@ export class LikedComponent implements OnInit {
   public showIframe: boolean = false;
   public selectedItem: any;
   public nextPageToken: string;
-  public isDisabled: boolean = false;
+  public showMoreVideoBtn: boolean = false;
 
   constructor(
     private youtubeApiService: YoutubeApiService
@@ -26,10 +26,11 @@ export class LikedComponent implements OnInit {
   public getMyLikedVideos(maxResult, pageToken?): any {
     this.youtubeApiService.getUserLikedVideos(maxResult, pageToken).subscribe(
       (response: any) => {
-        console.log(response);
         this.myLiked = this.myLiked.concat(response.items);
-        console.log(response.nextPageToken);
-        this.nextPageToken = response.nextPageToken && this.nextPageToken !== response.nextPageToken ? response.nextPageToken : this.isDisabled = true ;
+        this.showMoreVideoBtn = true;
+        this.nextPageToken = response.nextPageToken && this.nextPageToken !== response.nextPageToken
+                           ? response.nextPageToken
+                           : this.showMoreVideoBtn = false;
       },
       (error: any) => {
         return error;
@@ -37,7 +38,6 @@ export class LikedComponent implements OnInit {
   }
 
   public receiveVideoItem(e): void {
-    console.log(e);
     this.selectedItem = e;
     this.showIframe = true;
 

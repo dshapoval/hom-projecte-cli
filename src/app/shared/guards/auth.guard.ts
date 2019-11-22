@@ -22,8 +22,6 @@ export class AuthGuard implements CanActivate, CanLoad {
 
   public canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
     if (this.userService.isAuth()) {
-      console.log(this.userService.isAuth$);
-      console.log('i work');
       return true;
     }
     this.router.navigate(['/sign-in']);

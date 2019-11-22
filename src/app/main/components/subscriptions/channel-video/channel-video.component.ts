@@ -16,6 +16,7 @@ export class ChannelVideoComponent implements OnInit {
   public nextPageToken: string;
   public selectedItem: any;
   public showIframe: boolean = false;
+  public showMoreVideoBtn: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -46,11 +47,13 @@ export class ChannelVideoComponent implements OnInit {
         (response: any) => {
           this.channelVideos = this.channelVideos.concat(response.items);
           this.nextPageToken = response.nextPageToken;
+          this.showMoreVideoBtn = true;
         },
         (error: any) => {
           console.log(error);
         });
   }
+
   public receiveVideoItem(e): void {
     this.selectedItem = e;
     this.showIframe = true;

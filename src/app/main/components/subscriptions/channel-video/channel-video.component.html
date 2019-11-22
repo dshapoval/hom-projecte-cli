@@ -13,5 +13,5 @@
       </app-video-item>
     </div>
   </section>
-  <button class="more-videos button button-red" (click)="getSubscriptVideo(channelId, maxResult, nextPageToken)">Показать еще</button>
+  <button class="more-videos button button-red" [class.hide]="!showMoreVideoBtn" (click)="getSubscriptVideo(channelId, maxResult, nextPageToken)">Показать еще</button>
 </article>

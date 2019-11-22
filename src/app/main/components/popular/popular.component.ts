@@ -13,7 +13,8 @@ export class PopularComponent implements OnInit {
   public showIframe: boolean = false;
   public selectedItem: any;
   public nextPageToken: string;
-  public isDisabled: boolean = false;
+  public showMoreVideoBtn: boolean = false;
+
 
 
   constructor(
@@ -27,13 +28,12 @@ export class PopularComponent implements OnInit {
   public getPopularVideos(mostPopular, UA, maxResult, nextPageToken?): any {
     this.youtubeApiService.getPopularVideo(mostPopular, UA, maxResult, nextPageToken).subscribe(
       (response: any) => {
-        console.log(this.nextPageToken);
-        console.log(response.nextPageToken);
+        this.showMoreVideoBtn = true;
         if (response && response.nextPageToken !== this.nextPageToken) {
           this.popularVideos = this.popularVideos.concat(response.items);
           this.nextPageToken = response.nextPageToken;
         } else {
-          this.isDisabled = true;
+          this.showMoreVideoBtn = false;
         }
       },
       (error: any) => {

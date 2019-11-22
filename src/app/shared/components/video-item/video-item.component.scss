@@ -1,6 +1,3 @@
-.video-item {
-  min-width: 152px;
-}
 .button-play {
   background-color: transparent;
   border: none;
@@ -20,6 +17,11 @@
       background-repeat: no-repeat;
       background-position: center;
     }
+  }
+}
+.home__subscription, .home__liked-video, .home__popular-channels {
+  .video-item {
+    min-width: 152px;
   }
 }
 .liked, .popular, .search, .channel-video {

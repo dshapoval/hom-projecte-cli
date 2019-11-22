@@ -9,6 +9,7 @@ import { AppConstants } from '../../../app.constants';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
   public config: SwiperConfigInterface;
   public mySubscriptions: Array<any>;
@@ -49,14 +50,10 @@ export class HomeComponent implements OnInit {
     this.youtubeApiService.getPopularVideo(mostPopular, UA).subscribe(
       (response: any) => {
         this.popular = response.items;
-        console.log(response.items);
       },
       (error: any) => {
         return error;
       });
   }
 
-  public singOut(): void {
-    this.userService.signOut();
-  }
 }

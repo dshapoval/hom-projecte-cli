@@ -14,7 +14,6 @@ export class SearchComponent implements OnInit {
   public pageToken: string;
   public selectedItem: any;
   public searchResult: Array<any> = [];
-  public isDisabled: boolean = false;
   public showIframe: boolean = false;
   public showMoreVideoBtn: boolean = false;
 

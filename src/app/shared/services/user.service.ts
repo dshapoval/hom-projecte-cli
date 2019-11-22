@@ -41,7 +41,6 @@ export class UserService {
   public signIn() {
      this.googleAuth.getAuth()
       .subscribe((auth) => {
-        console.log(auth);
         auth.signIn().then(
           res => this.signInSuccessHandler(res),
           err => this.signInErrorHandler(err)

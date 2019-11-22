@@ -11,15 +11,12 @@ export class MainComponent implements OnInit {
 
   public userName: string;
 
-  constructor(
-    private userService: UserService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
     this.getUserName();
   }
   public getUserName(): void {
     this.userName = localStorage.getItem(AppConstants.USER_NAME);
-    console.log('this.userName', this.userName);
   }
 }

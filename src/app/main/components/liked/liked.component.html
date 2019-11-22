@@ -13,5 +13,5 @@
       </app-video-item>
     </div>
   </section>
-  <button class="more-videos button button-red" [disabled] = "isDisabled" (click)="getMyLikedVideos(maxResult, nextPageToken)">Показать еще</button>
+  <button class="more-videos button button-red" [class.hide] = "!showMoreVideoBtn" (click)="getMyLikedVideos(maxResult, nextPageToken)">Показать еще</button>
 </article>
