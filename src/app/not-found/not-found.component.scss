@@ -1,0 +1,30 @@
+@import "../../assets/scss/base-part";
+.not-found {
+  &__error {
+    font-weight: 500;
+    text-align: center;
+    font-size: 150px;
+    line-height: 1;
+    margin-top: 30px;
+
+    @include mq-tablet {
+      font-size: 250px;
+      margin-top: 60px;
+    }
+    @include mq-desctop {
+      font-size: 350px;
+    }
+  }
+  &__description {
+    text-align: center;
+    font-size: 38px;
+    line-height: 1;
+
+    @include mq-tablet {
+      font-size: 80px;
+    }
+    @include mq-desctop {
+      font-size: 130px;
+    }
+  }
+}

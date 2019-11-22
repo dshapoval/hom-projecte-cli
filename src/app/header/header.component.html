@@ -6,15 +6,19 @@
       </a>
     </div>
     <div class="burger-button hamburger hamburger--elastic" (click)="showHideMainMenu()" [ngClass]="{'is-active': !isMainMenuShown}">
-    <div class="hamburger-box">
+      <div class="hamburger-box">
       <div class="hamburger-inner"></div>
     </div>
-  </div>
+    </div>
     <div class="menu medium-order-3 large-order-2 columns  medium-16 large-expand"
          [@showMainMenu]="mainMenuState"
          [ngClass]="{'is-open': !isMainMenuShown}">
       <div class="menu-item" *ngFor="let link of links" >
-        <a class="menu-link" [routerLink] = "link.path" routerLinkActive = "active-link" [routerLinkActiveOptions]="{exact: true}">{{link.label}}</a>
+        <a class="menu-link"
+           [routerLink] = "link.path"
+           routerLinkActive = "active-link"
+           [routerLinkActiveOptions]="{exact: true}"
+          (click)="hideMainMenu()">{{link.label}}</a>
       </div>
     </div>
     <div class="log-in-block column shrink medium-order-2 large-order-3"> <!--!(this.userService.isAuth$ | async)-->

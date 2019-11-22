@@ -17,6 +17,18 @@ export class YoutubeApiService {
     return AppConstants.YOUTUBE_API_URL + url;
   }
 
+  public createUriParams(data: any): HttpParams {
+    let params = new HttpParams();
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        if (data[key]) {
+          params = params.append(key, data[key]);
+        }
+      }
+    }
+    return params;
+  }
+
   public getVideoById(videoId: string): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['player'];
@@ -145,22 +157,11 @@ export class YoutubeApiService {
         })
       );
   }
-  public createUriParams(data: any): HttpParams {
-    let params = new HttpParams();
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        if (data[key]) {
-          params = params.append(key, data[key]);
-        }
-      }
-    }
-    return params;
-  }
+
 
   public searchVideo(searhPrams?): Observable<any> {
     let params: HttpParams = new HttpParams();
     const part = ['snippet'];
-    console.log(typeof searhPrams.maxResult)
     params = this.createUriParams(searhPrams);
     params = params.append('part', part.join(','));
     params =  params.append('relevanceLanguage', 'ru');

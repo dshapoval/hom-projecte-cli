@@ -1,0 +1,32 @@
+.video-item {
+  min-width: 152px;
+}
+.button-play {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  &:hover {
+    &:after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      background-color: rgba(45, 46, 48, .34);
+      background-image: url("../../../../assets/images/ic-video-play.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+}
+.liked, .popular, .search, .channel-video {
+  iframe {
+    display: block;
+    height:500px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}

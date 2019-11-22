@@ -6,7 +6,6 @@ const SignInRoutes: Routes = [
   {
     path: '',
     component: SignInComponent,
-    pathMatch: 'full',
   }
 ];
 

@@ -9,23 +9,23 @@ export const MainRoutes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+        loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule),
       },
       {
         path: 'subscriptions',
-        loadChildren: () => import('./subscriptions/subscriptions.module').then(m => m.SubscriptionsModule),
+        loadChildren: () => import('./components/subscriptions/subscriptions.module').then(m => m.SubscriptionsModule),
       },
       {
         path: 'liked',
-        loadChildren: () => import('./liked/liked.module').then(m => m.LikedModule),
+        loadChildren: () => import('./components/liked/liked.module').then(m => m.LikedModule),
       },
       {
         path: 'popular',
-        loadChildren: () => import('./popular/popular.module').then(m => m.PopularModule),
+        loadChildren: () => import('./components/popular/popular.module').then(m => m.PopularModule),
       },
       {
         path: 'search',
-        loadChildren: () => import('./search/search.module').then(m => m.SearchModule),
+        loadChildren: () => import('./components/search/search.module').then(m => m.SearchModule),
       },
       {
         path: '',

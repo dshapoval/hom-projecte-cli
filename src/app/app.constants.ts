@@ -6,6 +6,8 @@ export class AppConstants {
 
   public static EXPIRE_AT = 'expireTimeStamp';
 
+  public static USER_NAME = 'userName';
+
   public static YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3';
 
   public static getGapiClientConfig(): NgGapiClientConfig {

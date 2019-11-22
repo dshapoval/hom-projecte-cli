@@ -16,11 +16,19 @@
   background: #2d2e30;
   margin: 20px 0;
   @include mq-tablet {
-    margin: 30px auto;
+    margin: 30px auto 15px;
   }
 }
 
 .main-title {
   height: 50px;
   line-height: 50px;
+}
+.more-videos {
+  max-width: 500px;
+  margin: 50px auto 0;
+}
+.user-name {
+  color: #ff0000;
+  margin-bottom: 20px;
 }

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { SignInModule } from '../sign-in/sign-in.module';
-import { SubscriptionsModule } from './subscriptions/subscriptions.module';
-import { LikedModule } from './liked/liked.module';
-import { HomeModule } from './home/home.module';
-import { PopularModule } from './popular/popular.module';
-import { SearchModule } from './search/search.module';
+import { SubscriptionsModule } from './components/subscriptions/subscriptions.module';
+import { LikedModule } from './components/liked/liked.module';
+import { HomeModule } from './components/home/home.module';
+import { PopularModule } from './components/popular/popular.module';
+import { SearchModule } from './components/search/search.module';
 
 
 
