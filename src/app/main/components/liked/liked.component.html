@@ -1,0 +1,17 @@
+<article class="wrapper row liked">
+  <div class="title"></div>
+  <section class="row small-up-2 medium-up-3 large-up-5">
+    <div *ngFor="let video of myLiked" class="column">
+      <app-video-item [item] = video
+                      [isIframe]="false"
+                      (sendPlayer)="receiveVideoItem($event)">
+      </app-video-item>
+    </div>
+    <div class="video-wrapper" *ngIf="showIframe" (click)="closeIframe()">
+      <app-video-item [isIframe]="true"
+                      [item]="selectedItem">
+      </app-video-item>
+    </div>
+  </section>
+  <button class="more-videos button button-red" [disabled] = "isDisabled" (click)="getMyLikedVideos(maxResult, nextPageToken)">Показать еще</button>
+</article>

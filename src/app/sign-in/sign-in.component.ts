@@ -52,7 +52,7 @@ export class SignInComponent implements OnInit {
   }
 
   public getPlaylist(channelId?: string): any {
-    this.youtubeApiService.getMinePlaylist(channelId)
+    this.youtubeApiService.getPlaylist(channelId)
       .subscribe(
         (response: any) => {
           console.log(response);

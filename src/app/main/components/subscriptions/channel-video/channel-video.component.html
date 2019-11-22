@@ -1,0 +1,17 @@
+<article class="wrapper row channel-video">
+  <div class="title"></div>
+  <section class="row small-up-2 medium-up-3 large-up-5">
+    <div *ngFor="let video of channelVideos" class="column">
+      <app-video-item [item]=video
+                      [isIframe]="false"
+                      (getVideoId)="receiveVideoItem($event)">
+      </app-video-item>
+    </div>
+    <div class="video-wrapper" *ngIf="showIframe" (click)="closeIframe()">
+      <app-video-item [isIframe]="true"
+                      [item]="selectedItem">
+      </app-video-item>
+    </div>
+  </section>
+  <button class="more-videos button button-red" (click)="getSubscriptVideo(channelId, maxResult, nextPageToken)">Показать еще</button>
+</article>

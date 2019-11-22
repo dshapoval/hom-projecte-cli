@@ -8,39 +8,25 @@ export const MainRoutes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: 'new-items',
-        loadChildren: () => import('./new-items/new-items.module').then(m => m.NewItemsModule),
-      },
-      {
-        path: 'recently-viewed',
-        loadChildren: () => import('./recently-viewed/recently-viewed.module').then(m => m.RecentlyViewedModule),
-      },
-      {
-        path: 'recommendations',
-        loadChildren: () => import('./recommendations/recommendations.module').then(m => m.RecommendationsModule),
-      },
-      {
-        path: 'top',
-        loadChildren: () => import('./top/top.module').then(m => m.TopModule),
-      },
-      {
-        path: 'trailers',
-        loadChildren: () => import('./trailers/trailers.module').then(m => m.TrailersModule),
-      },
-      {
-        path: 'watch-later',
-        loadChildren: () => import('./watch-later/watch-later.module').then(m => m.WatchLaterModule),
-      }
-      ,
-      {
-        path: 'sign-in',
-        loadChildren: () => import('./watch-later/watch-later.module').then(m => m.WatchLaterModule),
-      },
-      {
         path: 'home',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-      }
-      ,
+        loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule),
+      },
+      {
+        path: 'subscriptions',
+        loadChildren: () => import('./components/subscriptions/subscriptions.module').then(m => m.SubscriptionsModule),
+      },
+      {
+        path: 'liked',
+        loadChildren: () => import('./components/liked/liked.module').then(m => m.LikedModule),
+      },
+      {
+        path: 'popular',
+        loadChildren: () => import('./components/popular/popular.module').then(m => m.PopularModule),
+      },
+      {
+        path: 'search',
+        loadChildren: () => import('./components/search/search.module').then(m => m.SearchModule),
+      },
       {
         path: '',
         redirectTo: 'home',

@@ -1,0 +1,86 @@
+<article>
+  <section class="subscription">
+    <div class="subscription__title title-wrapper">
+      <div class="wrapper row align-justify">
+        <div class="title">
+          Мои подписки
+        </div>
+        <a class="subscription__link" [routerLink]="['/main/subscriptions']">
+          Показать все
+          <b>
+            <svg viewBox="123.5 120.5 129.1 200">
+              <polygon points="123.5,291.4 152.6,320.5 252.6,220.5 152.6,120.5 123.5,147.8 196.3,220.5"></polygon>
+            </svg>
+          </b>
+        </a>
+      </div>
+    </div>
+    <div class="wrapper row">
+     <div class="small-16">
+       <app-swiper-container>
+         <div *ngFor="let subscription of mySubscriptions" class="swiper-slide column">
+           <app-channel-item [item] = subscription>
+           </app-channel-item>
+         </div>
+       </app-swiper-container>
+     </div>
+    </div>
+  </section>
+  <section class="liked-video">
+    <div class="liked-video__title title-wrapper">
+      <div class="wrapper row align-justify">
+        <div class="title">
+          Понравившиеся
+        </div>
+        <a class="liked-video__link" [routerLink]="['/main/liked']">
+          Показать все
+          <b>
+            <svg viewBox="123.5 120.5 129.1 200">
+              <polygon points="123.5,291.4 152.6,320.5 252.6,220.5 152.6,120.5 123.5,147.8 196.3,220.5"></polygon>
+            </svg>
+          </b>
+        </a>
+      </div>
+    </div>
+    <div class="wrapper row">
+      <div class="small-16">
+        <app-swiper-container>
+          <div *ngFor="let likedItems of myLiked" class="swiper-slide column">
+            <app-video-item  [item]=likedItems
+                             [isIframe]="true">
+            </app-video-item>
+          </div>
+        </app-swiper-container>
+      </div>
+    </div>
+  </section>
+  <section class="popular-channels">
+    <div class="popular-channels__title title-wrapper">
+      <div class="wrapper row align-justify">
+        <div class="title">
+          Популярные
+        </div>
+        <a class="popular-channels__link" [routerLink]="['/main/liked']">
+          Показать все
+          <b>
+            <svg viewBox="123.5 120.5 129.1 200">
+              <polygon points="123.5,291.4 152.6,320.5 252.6,220.5 152.6,120.5 123.5,147.8 196.3,220.5"></polygon>
+            </svg>
+          </b>
+        </a>
+      </div>
+    </div>
+    <div class="wrapper row">
+      <div class="small-16">
+        <app-swiper-container>
+          <div *ngFor="let popularItem of popular" class="swiper-slide column">
+            <app-video-item  [item]=popularItem
+                             [isIframe]="true">
+            </app-video-item>
+          </div>
+        </app-swiper-container>
+      </div>
+    </div>
+  </section>
+</article>
+

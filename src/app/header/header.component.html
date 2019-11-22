@@ -1,20 +1,24 @@
 <section class="header">
   <div class="wrapper row header-container">
-    <div class="logo shrink column medium-order-1 large-order-1">
+    <div class="logo shrink medium-order-1 large-order-1">
       <a class="logo-link" [routerLink]= "['main']">
         <img src="assets/images/main-logo.png" alt="">
       </a>
     </div>
     <div class="burger-button hamburger hamburger--elastic" (click)="showHideMainMenu()" [ngClass]="{'is-active': !isMainMenuShown}">
-    <div class="hamburger-box">
+      <div class="hamburger-box">
       <div class="hamburger-inner"></div>
     </div>
-  </div>
+    </div>
     <div class="menu medium-order-3 large-order-2 columns  medium-16 large-expand"
          [@showMainMenu]="mainMenuState"
          [ngClass]="{'is-open': !isMainMenuShown}">
       <div class="menu-item" *ngFor="let link of links" >
-        <a class="menu-link" [routerLink] = "link.path" routerLinkActive = "active-link" [routerLinkActiveOptions]="{exact: true}">{{link.label}}</a>
+        <a class="menu-link"
+           [routerLink] = "link.path"
+           routerLinkActive = "active-link"
+           [routerLinkActiveOptions]="{exact: true}"
+          (click)="hideMainMenu()">{{link.label}}</a>
       </div>
     </div>
     <div class="log-in-block column shrink medium-order-2 large-order-3"> <!--!(this.userService.isAuth$ | async)-->
@@ -23,9 +27,6 @@
       </div>
       <div *ngIf="this.userService.isLogedIn() | async" class="sign-out">
         <button class="sign-out__button" (click)="singOut()">Выйти</button>
-      </div>
-      <div class="registration">
-        <a class="registration__link" href="">Регистрация</a>
       </div>
     </div>
   </div>

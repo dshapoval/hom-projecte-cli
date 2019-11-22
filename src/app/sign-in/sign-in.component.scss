@@ -1,28 +1,8 @@
 @import '../../assets/scss/base-part';
-.button {
-  width: 100%;
-  height: 40px;
-  border: none;
-  cursor: pointer;
-  color: #fff;
-  transition: .3s;
-}
-.button-red {
-  background: #ff0000;
-  &:hover {
-    background: darken(#ff0000, 20%);
-  }
-}
-.button-grey {
-  background: #bebebe;
-  &:hover {
-    background: darken(#bebebe, 20%);
-  }
-}
 .mt {
   margin-top: 24px;
 }
-.log-in__title {
+.sign-in__title {
   font-size: 16px;
   margin-top: 8px;
   margin-bottom: 0;
@@ -34,4 +14,8 @@
 .title-descr {
   font-size: 14px;
   color: #bebebe;
+}
+.sing-in {
+  width: 100%;
+  max-width: 250px;
 }

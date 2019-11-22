@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main-routing.module';
 import { SignInModule } from '../sign-in/sign-in.module';
-import { WatchLaterModule } from './watch-later/watch-later.module';
-import { TrailersModule } from './trailers/trailers.module';
-import { RecentlyViewedModule } from './recently-viewed/recently-viewed.module';
-import { NewItemsModule } from './new-items/new-items.module';
-import { RecommendationsModule } from './recommendations/recommendations.module';
-import { TopModule } from './top/top.module';
-import { HomeModule } from './home/home.module';
+import { SubscriptionsModule } from './components/subscriptions/subscriptions.module';
+import { LikedModule } from './components/liked/liked.module';
+import { HomeModule } from './components/home/home.module';
+import { PopularModule } from './components/popular/popular.module';
+import { SearchModule } from './components/search/search.module';
 
 
 
@@ -18,14 +16,13 @@ import { HomeModule } from './home/home.module';
     CommonModule,
     MainRoutingModule,
     SignInModule,
-    WatchLaterModule,
-    TrailersModule,
-    RecentlyViewedModule,
-    NewItemsModule,
-    TopModule,
-    RecommendationsModule,
+    SubscriptionsModule,
+    LikedModule,
     HomeModule,
-    SignInModule],
+    SignInModule,
+    PopularModule,
+    SearchModule
+  ],
   declarations: [ MainComponent ],
   exports: [ MainComponent ]
 })
